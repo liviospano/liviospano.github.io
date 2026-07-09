@@ -496,6 +496,88 @@ nav a:hover { opacity:1; }
   }
 }
 
+/* IMAGE PROTECTION AND COPYRIGHT */
+img {
+  -webkit-user-drag:none;
+  user-drag:none;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+.item,
+.book-cover-box,
+.polaroid-frame,
+.book-reader-header {
+  position:relative;
+  overflow:hidden;
+}
+
+.item::after,
+.book-cover-box::after,
+.book-reader-header::after {
+  content:"© Livio Spanò";
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  font-size:9px;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.58);
+  background:rgba(0,0,0,0.28);
+  padding:3px 5px;
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+  z-index:3;
+}
+
+.polaroid-frame::after {
+  content:"© Enza Amato";
+  position:absolute;
+  right:10px;
+  bottom:34px;
+  font-size:9px;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.58);
+  background:rgba(0,0,0,0.28);
+  padding:3px 5px;
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+  z-index:3;
+}
+
+#overlay:not(.book-mode)::after {
+  content:"© Livio Spanò";
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  font-size:10px;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.58);
+  background:rgba(0,0,0,0.28);
+  padding:4px 6px;
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+  z-index:10001;
+}
+
+#polaroid-viewer::after {
+  content:"© Enza Amato";
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  font-size:10px;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.58);
+  background:rgba(0,0,0,0.28);
+  padding:4px 6px;
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+  z-index:10001;
+}
+
 </style>
 <!-- GitHub Pages stable no-hash navigation version. -->
 </head>
@@ -1132,6 +1214,38 @@ function closeImg(){
     const link = document.getElementById("private-admin-link");
     if (link) link.style.display = "block";
   }
+})();
+</script>
+
+
+<script>
+(function(){
+  function isProtectedImage(target) {
+    return target && target.tagName && target.tagName.toLowerCase() === "img";
+  }
+
+  document.addEventListener("contextmenu", function(event) {
+    if (isProtectedImage(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("dragstart", function(event) {
+    if (isProtectedImage(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("mousedown", function(event) {
+    if (isProtectedImage(event.target) && event.button === 2) {
+      event.preventDefault();
+    }
+  });
+
+  document.querySelectorAll("img").forEach(function(img){
+    img.setAttribute("draggable", "false");
+    img.setAttribute("oncontextmenu", "return false");
+  });
 })();
 </script>
 
