@@ -482,17 +482,17 @@ nav a:hover { opacity:1; }
 }
 
 </style>
-<!-- GitHub Pages clean external asset version. -->
+<!-- GitHub Pages stable no-hash navigation version. -->
 </head>
 
 <body>
 
 <nav>
-<a href="#others" onclick="showSection('others')">THE OTHERS AND I</a>
-<a href="#colours" onclick="showSection('colours')">COLOURS EDITION</a>
-<a href="#books" onclick="showSection('books')">BOOKS</a>
-<a href="#about" onclick="showSection('about')">ABOUT</a>
-<a href="#contact" onclick="showSection('contact')">CONTACT</a>
+<a onclick="showSection('others')">THE OTHERS AND I</a>
+<a onclick="showSection('colours')">COLOURS EDITION</a>
+<a onclick="showSection('books')">BOOKS</a>
+<a onclick="showSection('about')">ABOUT</a>
+<a onclick="showSection('contact')">CONTACT</a>
 </nav>
 
 <!-- INTRO -->
@@ -972,63 +972,68 @@ Powered by INEBRIUS
 
 <script>
 
-window.onload = function(){
-  restoreSectionFromUrl();
-
-  setTimeout(function(){
-    document.getElementById("intro").style.display = "none";
-    const content = document.querySelector(".main-content");
-    content.style.display = "block";
-    restoreSectionFromUrl();
-    setTimeout(function(){ content.style.opacity = "1"; }, 50);
-  }, 6000);
-};
-
 const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
-function showSection(id, updateUrl = true){
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  document.querySelectorAll('.section').forEach(function(sec){
-    sec.classList.remove('active');
-  });
-
-  target.classList.add('active');
-
-  try {
-    sessionStorage.setItem("livioActiveSection", id);
-  } catch(e) {}
-
-  if (updateUrl && window.location.hash !== "#" + id) {
-    history.replaceState(null, "", "#" + id);
-  }
-}
-
 function getSavedSection(){
-  const sectionFromHash = window.location.hash.replace("#", "");
-
-  if (VALID_SECTIONS.includes(sectionFromHash)) {
-    return sectionFromHash;
-  }
-
   try {
-    const savedSection = sessionStorage.getItem("livioActiveSection");
-    if (VALID_SECTIONS.includes(savedSection)) {
-      return savedSection;
+    const saved = sessionStorage.getItem("livioActiveSection");
+    if (VALID_SECTIONS.includes(saved)) {
+      return saved;
     }
   } catch(e) {}
 
   return "others";
 }
 
-function restoreSectionFromUrl(){
-  showSection(getSavedSection(), false);
+function showSection(id){
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  document.querySelectorAll(".section").forEach(function(sec){
+    sec.classList.remove("active");
+  });
+
+  target.classList.add("active");
+
+  try {
+    sessionStorage.setItem("livioActiveSection", id);
+  } catch(e) {}
 }
 
-window.addEventListener("DOMContentLoaded", restoreSectionFromUrl);
-window.addEventListener("load", restoreSectionFromUrl);
-window.addEventListener("hashchange", restoreSectionFromUrl);
+function restoreSection(){
+  showSection(getSavedSection());
+}
+
+function showMainContentImmediately(){
+  document.getElementById("intro").style.display = "none";
+  const content = document.querySelector(".main-content");
+  content.style.display = "block";
+  content.style.opacity = "1";
+  restoreSection();
+}
+
+window.onload = function(){
+  restoreSection();
+
+  let introAlreadySeen = false;
+
+  try {
+    introAlreadySeen = sessionStorage.getItem("livioIntroSeen") === "true";
+  } catch(e) {}
+
+  if (introAlreadySeen) {
+    showMainContentImmediately();
+    return;
+  }
+
+  setTimeout(function(){
+    try {
+      sessionStorage.setItem("livioIntroSeen", "true");
+    } catch(e) {}
+
+    showMainContentImmediately();
+  }, 6000);
+};
 
 function openImg(img){
   const overlay = document.getElementById("overlay");
