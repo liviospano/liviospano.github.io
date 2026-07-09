@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Livio Spanò, Photography and Books</title>
 <meta name="description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 
@@ -18,6 +19,13 @@
 <meta name="twitter:title" content="Livio Spanò, Photography and Books">
 <meta name="twitter:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 <meta name="twitter:image" content="https://www.liviospano.com/images/social-preview.jpg">
+
+<link rel="preload" as="image" href="firma.png">
+<link rel="preload" as="image" href="1.jpg">
+<link rel="preload" as="image" href="2.jpg">
+<link rel="preload" as="image" href="3.jpg">
+<link rel="preload" as="image" href="4.jpg">
+<link rel="preload" as="image" href="5.jpg">
 
 <style>
 
@@ -64,7 +72,7 @@ nav a:hover { opacity:1; }
   max-width:1400px;
   filter:invert(1);
   opacity:0;
-  animation:fadeIn 2s forwards, fadeOut 2s forwards 4s;
+  animation:fadeIn 1.3s forwards, fadeOut 1.1s forwards 2.7s;
 }
 
 @keyframes fadeIn { to {opacity:1;} }
@@ -504,78 +512,27 @@ img {
   user-select:none;
 }
 
-.item,
-.book-cover-box,
-.polaroid-frame,
-.book-reader-header {
+#others .item {
   position:relative;
   overflow:hidden;
 }
 
-.item::after,
-.book-cover-box::after,
-.book-reader-header::after {
-  content:"© Livio Spanò";
+#others .item::after {
+  content:"©";
   position:absolute;
-  right:10px;
-  bottom:10px;
+  right:8px;
+  bottom:8px;
   font-size:9px;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.58);
-  background:rgba(0,0,0,0.28);
-  padding:3px 5px;
-  border:1px solid rgba(255,255,255,0.10);
-  backdrop-filter:blur(2px);
+  line-height:1;
+  color:rgba(255,255,255,0.45);
+  background:rgba(0,0,0,0.18);
+  padding:3px 4px;
   pointer-events:none;
   z-index:3;
 }
 
-.polaroid-frame::after {
-  content:"© Enza Amato";
-  position:absolute;
-  right:10px;
-  bottom:34px;
-  font-size:9px;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.58);
-  background:rgba(0,0,0,0.28);
-  padding:3px 5px;
-  border:1px solid rgba(255,255,255,0.10);
-  backdrop-filter:blur(2px);
-  pointer-events:none;
-  z-index:3;
-}
-
-#overlay:not(.book-mode)::after {
-  content:"© Livio Spanò";
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  font-size:10px;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.58);
-  background:rgba(0,0,0,0.28);
-  padding:4px 6px;
-  border:1px solid rgba(255,255,255,0.10);
-  backdrop-filter:blur(2px);
-  pointer-events:none;
-  z-index:10001;
-}
-
-#polaroid-viewer::after {
-  content:"© Enza Amato";
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  font-size:10px;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.58);
-  background:rgba(0,0,0,0.28);
-  padding:4px 6px;
-  border:1px solid rgba(255,255,255,0.10);
-  backdrop-filter:blur(2px);
-  pointer-events:none;
-  z-index:10001;
+#others .item .caption {
+  right:auto;
 }
 
 </style>
@@ -594,7 +551,7 @@ img {
 
 <!-- INTRO -->
 <div id="intro">
-<img src="firma.png" class="signature">
+<img src="firma.png" class="signature" alt="Livio Spanò" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false">
 </div>
 
 <!-- CONTENUTO -->
@@ -605,16 +562,16 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item"><img src="1.jpg" onclick="openImg(this)"><div class="caption">Mother, does this world deserve me?</div></div>
-<div class="item"><img src="2.jpg" onclick="openImg(this)"><div class="caption">Turbo Island in my mind</div></div>
-<div class="item"><img src="3.jpg" onclick="openImg(this)"><div class="caption">Is there really an age for being happy?</div></div>
-<div class="item"><img src="4.jpg" onclick="openImg(this)"><div class="caption">Wrapped in urban decay</div></div>
-<div class="item"><img src="5.jpg" onclick="openImg(this)"><div class="caption">Two distances, same street</div></div>
-<div class="item"><img src="6.jpg" onclick="openImg(this)"><div class="caption">A piece of childhood has remained before me.</div></div>
-<div class="item"><img src="7.jpg" onclick="openImg(this)"><div class="caption">Help me look for a trace of civilisation</div></div>
-<div class="item"><img src="8.jpg" onclick="openImg(this)"><div class="caption">UNMASKED</div></div>
-<div class="item"><img src="9.jpg" onclick="openImg(this)"><div class="caption">#9</div></div>
-<div class="item"><img src="10.jpg" onclick="openImg(this)"><div class="caption">#10</div></div>
+<div class="item"><img src="1.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img src="2.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img src="3.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Is there really an age for being happy?</div></div>
+<div class="item"><img src="4.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Wrapped in urban decay</div></div>
+<div class="item"><img src="5.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Two distances, same street</div></div>
+<div class="item"><img src="6.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">A piece of childhood has remained before me.</div></div>
+<div class="item"><img src="7.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">Help me look for a trace of civilisation</div></div>
+<div class="item"><img src="8.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">UNMASKED</div></div>
+<div class="item"><img src="9.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">#9</div></div>
+<div class="item"><img src="10.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">#10</div></div>
 </div>
 </div>
 
@@ -1129,7 +1086,7 @@ window.onload = function(){
     } catch(e) {}
 
     showMainContentImmediately();
-  }, 6000);
+  }, 3800);
 };
 
 function openImg(img){
