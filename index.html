@@ -488,11 +488,11 @@ nav a:hover { opacity:1; }
 <body>
 
 <nav>
-<a onclick="showSection('others')">THE OTHERS AND I</a>
-<a onclick="showSection('colours')">COLOURS EDITION</a>
-<a onclick="showSection('books')">BOOKS</a>
-<a onclick="showSection('about')">ABOUT</a>
-<a onclick="showSection('contact')">CONTACT</a>
+<a href="#others" onclick="showSection('others')">THE OTHERS AND I</a>
+<a href="#colours" onclick="showSection('colours')">COLOURS EDITION</a>
+<a href="#books" onclick="showSection('books')">BOOKS</a>
+<a href="#about" onclick="showSection('about')">ABOUT</a>
+<a href="#contact" onclick="showSection('contact')">CONTACT</a>
 </nav>
 
 <!-- INTRO -->
@@ -973,13 +973,18 @@ Powered by INEBRIUS
 <script>
 
 window.onload = function(){
+  restoreSectionFromUrl();
+
   setTimeout(function(){
     document.getElementById("intro").style.display = "none";
     const content = document.querySelector(".main-content");
     content.style.display = "block";
+    restoreSectionFromUrl();
     setTimeout(function(){ content.style.opacity = "1"; }, 50);
   }, 6000);
 };
+
+const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
 function showSection(id, updateUrl = true){
   const target = document.getElementById(id);
@@ -991,23 +996,38 @@ function showSection(id, updateUrl = true){
 
   target.classList.add('active');
 
-  if (updateUrl) {
+  try {
+    sessionStorage.setItem("livioActiveSection", id);
+  } catch(e) {}
+
+  if (updateUrl && window.location.hash !== "#" + id) {
     history.replaceState(null, "", "#" + id);
   }
 }
 
-function restoreSectionFromUrl(){
+function getSavedSection(){
   const sectionFromHash = window.location.hash.replace("#", "");
-  const validSections = ["others", "colours", "books", "about", "contact"];
 
-  if (validSections.includes(sectionFromHash)) {
-    showSection(sectionFromHash, false);
-  } else {
-    showSection("others", false);
+  if (VALID_SECTIONS.includes(sectionFromHash)) {
+    return sectionFromHash;
   }
+
+  try {
+    const savedSection = sessionStorage.getItem("livioActiveSection");
+    if (VALID_SECTIONS.includes(savedSection)) {
+      return savedSection;
+    }
+  } catch(e) {}
+
+  return "others";
+}
+
+function restoreSectionFromUrl(){
+  showSection(getSavedSection(), false);
 }
 
 window.addEventListener("DOMContentLoaded", restoreSectionFromUrl);
+window.addEventListener("load", restoreSectionFromUrl);
 window.addEventListener("hashchange", restoreSectionFromUrl);
 
 function openImg(img){
