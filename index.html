@@ -64,11 +64,14 @@ nav a:hover { opacity:1; }
 
 .intro-content {
   width:100%;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
+  box-sizing:border-box;
+  padding:40px 20px 90px;
 }
 
 .signature-subtitle {
@@ -197,12 +200,14 @@ nav a:hover { opacity:1; }
   width:100%;
   text-align:center;
   font-size:11px;
-  opacity:0.5;
+  opacity:0;
+  visibility:hidden;
   padding:10px 0;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(5px);
   letter-spacing:1px;
   z-index:1000;
+  transition:opacity 0.4s ease;
 }
 
 /* BOOKS LAYOUT */
@@ -1210,9 +1215,17 @@ function restoreSection(){
 
 function showMainContentImmediately(){
   document.getElementById("intro").style.display = "none";
+
   const content = document.querySelector(".main-content");
   content.style.display = "block";
   content.style.opacity = "1";
+
+  const footer = document.querySelector(".global-footer");
+  if (footer) {
+    footer.style.visibility = "visible";
+    footer.style.opacity = "0.5";
+  }
+
   restoreSection();
 }
 
