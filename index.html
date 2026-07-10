@@ -21,6 +21,8 @@
 <meta name="twitter:image" content="https://www.liviospano.com/images/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
+<link rel="preload" as="image" href="1.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="2.jpg">
 
 <style>
 
@@ -499,6 +501,30 @@ nav a:hover { opacity:1; }
   }
 }
 
+/* IMAGE RENDER STABILISATION */
+.item,
+.book-cover-box,
+.book-reader-header,
+.polaroid-frame {
+  background:#000;
+}
+
+.item img,
+.book-cover,
+.book-reader-cover,
+.polaroid-frame img {
+  background:#000;
+}
+
+.image-pending {
+  opacity:0;
+}
+
+.image-ready {
+  opacity:1;
+  transition:opacity 0.2s ease;
+}
+
 /* IMAGE PROTECTION AND COPYRIGHT */
 img {
   -webkit-user-drag:none;
@@ -577,8 +603,8 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item"><img  src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Mother, does this world deserve me?</div></div>
-<div class="item"><img  src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">Turbo Island in my mind</div></div>
 <div class="item"><img  src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Is there really an age for being happy?</div></div>
 <div class="item"><img  src="4.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Wrapped in urban decay</div></div>
 <div class="item"><img  src="5.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Two distances, same street</div></div>
@@ -710,7 +736,7 @@ Instagram: @liviospano_
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="eager">
     <h2>La vita accade</h2>
     <p class="book-reader-meta">Edizioni Amande</p>
   </div>
@@ -761,7 +787,7 @@ l’infinità di questo tetto universale.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="eager">
     <h2>Esserci a fatica</h2>
     <p class="book-reader-meta">Poesie di Livio Spanò<br>Polaroid di Enza Amato<br>Edizioni Underground</p>
   </div>
@@ -926,7 +952,7 @@ una gigantesca macchia.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="eager">
     <h2>Chiudi la porta prima di andare via<br>Il futuro era ieri</h2>
     <p class="book-reader-meta">Edizioni Underground</p>
   </div>
@@ -1043,7 +1069,35 @@ Powered by INEBRIUS
 
 const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
+const STABILISED_IMAGE_SELECTOR = ".item img, .book-cover, .book-reader-cover, .polaroid-frame img";
 
+function stabiliseImageRendering(root){
+  const scope = root || document;
+
+  scope.querySelectorAll(STABILISED_IMAGE_SELECTOR).forEach(function(img){
+    if (img.dataset.renderPrepared === "true") return;
+
+    img.dataset.renderPrepared = "true";
+
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add("image-ready");
+      return;
+    }
+
+    img.classList.add("image-pending");
+
+    img.addEventListener("load", function(){
+      img.classList.remove("image-pending");
+      img.classList.add("image-ready");
+    }, { once:true });
+
+    img.addEventListener("error", function(){
+      img.classList.remove("image-pending");
+    }, { once:true });
+  });
+}
+
+stabiliseImageRendering(document);
 
 function getSavedSection(){
   try {
@@ -1158,6 +1212,7 @@ function openBook(book){
   overlayImg.src = "";
 
   text.innerHTML = template ? template.innerHTML : "";
+  stabiliseImageRendering(text);
 }
 
 function closeImg(){
