@@ -21,7 +21,6 @@
 <meta name="twitter:image" content="https://www.liviospano.com/images/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
-<link rel="preload" as="image" href="1.jpg" fetchpriority="high">
 
 <style>
 
@@ -61,6 +60,28 @@ nav a:hover { opacity:1; }
   display:flex;
   justify-content:center;
   align-items:center;
+}
+
+.intro-content {
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.signature-subtitle {
+  margin:22px 20px 0;
+  max-width:700px;
+  font-size:clamp(12px, 1.4vw, 17px);
+  line-height:1.5;
+  letter-spacing:0.5px;
+  font-style:italic;
+  font-weight:normal;
+  color:rgba(255,255,255,0.68);
+  opacity:0;
+  animation:fadeIn 1.3s forwards, fadeOut 1.1s forwards 2.7s;
 }
 
 .signature {
@@ -580,23 +601,6 @@ nav a:hover { opacity:1; }
   }
 }
 
-/* IMAGE LOADING SURFACE */
-#others .item,
-#colours .item,
-.book-cover-box,
-.book-reader-header,
-.polaroid-frame {
-  background-color:#000;
-}
-
-#others .item img,
-#colours .item img,
-.book-cover,
-.book-reader-cover,
-.polaroid-frame img {
-  background-color:#000;
-}
-
 /* IMAGE PROTECTION AND COPYRIGHT */
 img {
   -webkit-user-drag:none;
@@ -664,7 +668,10 @@ img {
 
 <!-- INTRO -->
 <div id="intro">
-<img src="firma.png" class="signature" alt="Livio Spanò" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false">
+  <div class="intro-content">
+    <img src="firma.png" class="signature" alt="Livio Spanò" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false">
+    <p class="signature-subtitle">"I've no use for bodies. It's silent immobility that interests me"</p>
+  </div>
 </div>
 
 <!-- CONTENUTO -->
@@ -675,9 +682,9 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item"><img src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">Mother, does this world deserve me?</div></div>
-<div class="item"><img src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="auto"><div class="caption">Turbo Island in my mind</div></div>
-<div class="item"><img src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="auto"><div class="caption">Is there really an age for being happy?</div></div>
+<div class="item"><img  src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img  src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img  src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Is there really an age for being happy?</div></div>
 <div class="item"><img  src="4.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Wrapped in urban decay</div></div>
 <div class="item"><img  src="5.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Two distances, same street</div></div>
 <div class="item"><img  src="6.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">A piece of childhood has remained before me.</div></div>
@@ -806,16 +813,14 @@ In 2026, he encountered photography as a language he could understand, a way to 
            href="https://www.instagram.com/liviospano_/"
            target="_blank"
            rel="noopener noreferrer">INSTAGRAM</a>
+        <span class="contact-link">FACEBOOK: LIVIO SPANÒ</span>
         <a class="contact-link"
-           href="https://www.edizioniunderground.it/liviospan%C3%B2"
-           target="_blank"
-           rel="noopener noreferrer">BOOKS</a>
+           href="mailto:liviospano3@gmail.com">EMAIL: LIVIOSPANO3@GMAIL.COM</a>
       </div>
     </div>
   </div>
 </div>
 
-</div>
 </div>
 
 
@@ -1159,25 +1164,7 @@ Powered by INEBRIUS
 
 const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
-function warmFirstSectionImages(target){
-  if (!target) return;
 
-  const images = target.querySelectorAll("img");
-
-  images.forEach(function(img, index){
-    if (index >= 3) return;
-
-    img.loading = "eager";
-
-    if (index === 0) {
-      img.fetchPriority = "high";
-    }
-
-    if (typeof img.decode === "function") {
-      img.decode().catch(function(){});
-    }
-  });
-}
 
 function getSavedSection(){
   try {
@@ -1193,8 +1180,6 @@ function getSavedSection(){
 function showSection(id){
   const target = document.getElementById(id);
   if (!target) return;
-
-  warmFirstSectionImages(target);
 
   document.querySelectorAll(".section").forEach(function(sec){
     sec.classList.remove("active");
@@ -1219,7 +1204,7 @@ function showMainContentImmediately(){
   restoreSection();
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+window.onload = function(){
   restoreSection();
 
   let introAlreadySeen = false;
@@ -1240,7 +1225,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     showMainContentImmediately();
   }, 3800);
-});
+};
 
 function openImg(img){
   const overlay = document.getElementById("overlay");
