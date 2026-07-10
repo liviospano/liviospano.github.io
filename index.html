@@ -57,6 +57,11 @@ nav a {
 
 nav a:hover { opacity:1; }
 
+.mobile-nav-toggle,
+.mobile-nav-menu {
+  display:none;
+}
+
 /* INTRO */
 #intro {
   height:100vh;
@@ -624,6 +629,82 @@ nav a:hover { opacity:1; }
   color:black;
 }
 
+@media (max-width:768px) {
+  nav {
+    box-sizing:border-box;
+    min-height:44px;
+  }
+
+  nav > a {
+    display:none;
+  }
+
+  .mobile-nav-toggle {
+    position:absolute;
+    top:50%;
+    right:16px;
+    width:34px;
+    height:30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:0;
+    border:1px solid rgba(255,255,255,0.45);
+    background:transparent;
+    color:white;
+    cursor:pointer;
+  }
+
+  .mobile-nav-toggle span {
+    display:block;
+    width:18px;
+    height:1px;
+    background:white;
+  }
+
+  .mobile-nav-toggle:focus-visible,
+  .mobile-nav-menu button:focus-visible {
+    outline:1px solid white;
+    outline-offset:3px;
+  }
+
+  .mobile-nav-menu {
+    position:fixed;
+    top:44px;
+    left:0;
+    right:0;
+    z-index:1001;
+    display:none;
+    padding:8px 0;
+    box-sizing:border-box;
+    background:rgba(0,0,0,0.94);
+    text-align:center;
+  }
+
+  .mobile-nav-menu.is-open {
+    display:block;
+  }
+
+  .mobile-nav-menu button {
+    display:block;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:white;
+    padding:14px 20px;
+    font-family:Arial;
+    font-size:12px;
+    cursor:pointer;
+    opacity:0.82;
+  }
+
+  .mobile-nav-menu button:hover {
+    opacity:1;
+  }
+}
+
 @media (max-width:760px) {
   .book-row {
     grid-template-columns:1fr;
@@ -713,6 +794,19 @@ img {
 <a onclick="showSection('english-poetry')">ENGLISH POETRY</a>
 <a onclick="showSection('about')">ABOUT</a>
 <a onclick="showSection('contact')">CONTACT</a>
+<button id="mobile-nav-toggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu" onclick="toggleMobileMenu()">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</button>
+<div id="mobile-nav-menu" class="mobile-nav-menu" hidden>
+  <button type="button" onclick="selectMobileSection('others')">THE OTHERS AND I</button>
+  <button type="button" onclick="selectMobileSection('colours')">COLOURS EDITION</button>
+  <button type="button" onclick="selectMobileSection('books')">BOOKS</button>
+  <button type="button" onclick="selectMobileSection('english-poetry')">ENGLISH POETRY</button>
+  <button type="button" onclick="selectMobileSection('about')">ABOUT</button>
+  <button type="button" onclick="selectMobileSection('contact')">CONTACT</button>
+</div>
 </nav>
 
 <!-- INTRO -->
@@ -1259,6 +1353,38 @@ function restoreSection(){
   showSection(getSavedSection());
 }
 
+function getMobileNavElements(){
+  return {
+    toggle: document.getElementById("mobile-nav-toggle"),
+    menu: document.getElementById("mobile-nav-menu")
+  };
+}
+
+function setMobileMenuOpen(isOpen){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu) return;
+
+  nav.toggle.setAttribute("aria-expanded", String(isOpen));
+  nav.menu.hidden = !isOpen;
+  nav.menu.classList.toggle("is-open", isOpen);
+}
+
+function closeMobileMenu(){
+  setMobileMenuOpen(false);
+}
+
+function toggleMobileMenu(){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu) return;
+
+  setMobileMenuOpen(nav.toggle.getAttribute("aria-expanded") !== "true");
+}
+
+function selectMobileSection(id){
+  showSection(id);
+  closeMobileMenu();
+}
+
 function showMainContentImmediately(){
   document.getElementById("intro").style.display = "none";
 
@@ -1275,6 +1401,26 @@ document.addEventListener("DOMContentLoaded", function(){
   setTimeout(function(){
     showMainContentImmediately();
   }, 3800);
+});
+
+document.addEventListener("click", function(event){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu || nav.menu.hidden) return;
+  if (nav.toggle.contains(event.target) || nav.menu.contains(event.target)) return;
+
+  closeMobileMenu();
+});
+
+document.addEventListener("keydown", function(event){
+  if (event.key === "Escape") {
+    closeMobileMenu();
+  }
+});
+
+window.addEventListener("resize", function(){
+  if (window.innerWidth > 768) {
+    closeMobileMenu();
+  }
 });
 
 function openImg(img){
