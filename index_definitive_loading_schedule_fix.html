@@ -710,55 +710,74 @@ index(2).html
 File
 carico solo il file, perche openI non mi permette di caricare gli zip
 
-Ho corretto il file che hai caricato, intervenendo esclusivamente sulla gestione del caricamento.
 
-Correzioni applicate:
+Il file che hai caricato è soltanto index.html. Contiene i collegamenti alle fotografie, ma non contiene le immagini, quindi non permette di ridurne peso o risoluzione.
 
-il timer della firma parte appena l’HTML è pronto
-1.jpg, 2.jpg e 3.jpg caricano durante la firma
-solo la prima foto ha priorità alta
-quando apri una sezione partono subito le prime tre immagini
-le altre mantengono il lazy loading nativo
-sfondo nero durante l’attesa
-nessun placeholder trasparente
-nessuna opacity che nasconde le immagini
-nessun data-src
-nessun IntersectionObserver
+Non caricare altri file index.html.
 
-Verificati e mantenuti:
+Carica direttamente le fotografie, anche una alla volta, iniziando da:
 
-layout
-ordine delle fotografie
-caption
-testi
-copyright
+1.jpg fino a 10.jpg
+c1.jpg fino a c12.jpg
+
+Le ottimizzerò mantenendo:
+
+stessi nomi
+stesse proporzioni
+nessun ritaglio
+nessuna modifica artistica
+qualità adatta a un portfolio fotografico
+
+Questa è la correzione necessaria per migliorare davvero la prima apertura del sito.
+
+- un amico sta guardando il sito dal suo pc e dice che funziona molto bene- 
+
+-proseguiamo con gli altri step-
+
+Perfetto. Se da un altro computer il sito funziona bene, non tocchiamo più il caricamento delle immagini. Il problema sul tuo dispositivo è probabilmente legato alla cache o alla sessione del browser, non al sito pubblico.
+
+Blocchiamo quindi questa versione.
+Prossimi step
+
+    Verifica finale del simbolo © nelle due gallerie.
+
+    Completamento della pagina CONTACT.
+
+    Creazione della sezione JOURNAL.
+
+    Ottimizzazione delle immagini solo in seguito, senza urgenza.
+
+Procediamo con CONTACT.
+
+Toccherò esclusivamente quella sezione. Non verranno modificati:
+
+HOME
+THE OTHERS AND I
+COLOURS EDITION
 BOOKS
 ABOUT
-CONTACT
-social preview
-GoatCounter
+caricamento immagini
+copyright
+layout generale
 
-Caricalo rinominandolo esattamente:
+Per CONTACT inserirò una pagina pulita con:
 
-index.html
-
-Commit:
-
-Fix image loading schedule
-
-Questo è l’intervento completo possibile lavorando soltanto su index.html. Il peso reale delle fotografie non può essere ridotto senza avere i file immagine.
-
-mandami il file
+Instagram
+email
+eventuale collegamento al sito dei libri
+testo breve per collaborazioni, stampe ed esposizioni
 
 
-Prima apertura del sito
-- negativa dopo aggiornamento del codice- 
--aggiorno pagina una seconda volta- stesso problema- anche se piu lieve- 
+procedi
+
+Ho modificato soltanto la sezione CONTACT. Ho mantenuto invariati caricamento immagini, gallerie, BOOKS, ABOUT, copyright, menu, ordine delle foto, social preview e GoatCounter.
+
+Commit message:
+
+Complete Contact section
 
 
-
-
-index_definitive_loading_schedule_fix.html
+index_contact_completed.html
 
 <!DOCTYPE html>
 <html>
@@ -1217,6 +1236,86 @@ nav a:hover { opacity:1; }
   color:black;
 }
 
+/* CONTACT */
+.contact-shell {
+  min-height:calc(100vh - 180px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px 100px;
+  box-sizing:border-box;
+}
+
+.contact-card {
+  width:min(760px, 100%);
+  text-align:center;
+  padding:64px 42px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(0,0,0,0.28);
+}
+
+.contact-kicker {
+  margin:0 0 20px;
+  font-size:10px;
+  letter-spacing:4px;
+  opacity:0.48;
+}
+
+.contact-card h1 {
+  margin:0 0 24px;
+  font-size:clamp(30px, 5vw, 56px);
+  line-height:1.08;
+  font-weight:normal;
+}
+
+.contact-copy {
+  max-width:580px;
+  margin:0 auto 34px;
+  font-size:14px;
+  line-height:1.75;
+  opacity:0.72;
+}
+
+.contact-links {
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.contact-link {
+  display:inline-block;
+  min-width:130px;
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,0.55);
+  color:white;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:2px;
+  box-sizing:border-box;
+}
+
+.contact-link:hover {
+  background:white;
+  color:black;
+}
+
+@media (max-width:760px) {
+  .contact-card {
+    padding:48px 24px;
+  }
+
+  .contact-links {
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .contact-link {
+    width:100%;
+  }
+}
+
 /* PRIVATE ADMIN LINK */
 #private-admin-link {
   display:none;
@@ -1475,11 +1574,29 @@ In 2026, he encountered photography as a language he could understand, a way to 
 
 <!-- CONTACT -->
 <div id="contact" class="section">
-<div style="text-align:center;margin-top:120px;">
-Instagram: @liviospano_
-</div>
+  <div class="contact-shell">
+    <div class="contact-card">
+      <p class="contact-kicker">CONTACT</p>
+      <h1>Let’s create something meaningful.</h1>
+      <p class="contact-copy">
+        For collaborations, exhibitions, editorial projects and print enquiries,
+        get in touch through Instagram.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link"
+           href="https://www.instagram.com/liviospano_/"
+           target="_blank"
+           rel="noopener noreferrer">INSTAGRAM</a>
+        <a class="contact-link"
+           href="https://www.edizioniunderground.it/liviospan%C3%B2"
+           target="_blank"
+           rel="noopener noreferrer">BOOKS</a>
+      </div>
+    </div>
+  </div>
 </div>
 
+</div>
 </div>
 
 
