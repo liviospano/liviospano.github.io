@@ -21,11 +21,6 @@
 <meta name="twitter:image" content="https://www.liviospano.com/images/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
-<link rel="preload" as="image" href="1.jpg">
-<link rel="preload" as="image" href="2.jpg">
-<link rel="preload" as="image" href="3.jpg">
-<link rel="preload" as="image" href="4.jpg">
-<link rel="preload" as="image" href="5.jpg">
 
 <style>
 
@@ -535,6 +530,28 @@ img {
   right:auto;
 }
 
+/* LAZY IMAGE PERFORMANCE */
+.lazy-img {
+  opacity:0;
+  transition:opacity 0.45s ease;
+}
+
+.lazy-img.loaded {
+  opacity:1;
+}
+
+.item img {
+  min-height:220px;
+  object-fit:cover;
+  background:#050505;
+}
+
+.book-cover,
+.book-reader-cover {
+  min-height:260px;
+  background:#050505;
+}
+
 </style>
 <!-- GitHub Pages stable no-hash navigation version. -->
 </head>
@@ -562,16 +579,16 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item"><img src="1.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Mother, does this world deserve me?</div></div>
-<div class="item"><img src="2.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Turbo Island in my mind</div></div>
-<div class="item"><img src="3.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Is there really an age for being happy?</div></div>
-<div class="item"><img src="4.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Wrapped in urban decay</div></div>
-<div class="item"><img src="5.jpg" onclick="openImg(this)" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false"><div class="caption">Two distances, same street</div></div>
-<div class="item"><img src="6.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">A piece of childhood has remained before me.</div></div>
-<div class="item"><img src="7.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">Help me look for a trace of civilisation</div></div>
-<div class="item"><img src="8.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">UNMASKED</div></div>
-<div class="item"><img src="9.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">#9</div></div>
-<div class="item"><img src="10.jpg" onclick="openImg(this)" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false"><div class="caption">#10</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Is there really an age for being happy?</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="4.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Wrapped in urban decay</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="5.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Two distances, same street</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="6.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">A piece of childhood has remained before me.</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="7.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Help me look for a trace of civilisation</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="8.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">UNMASKED</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="9.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#9</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="10.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#10</div></div>
 </div>
 </div>
 
@@ -580,18 +597,18 @@ img {
 <h1 style="text-align:center;">COLOURS EDITION</h1>
 
 <div class="grid">
-<div class="item"><img src="c1.jpg" onclick="openImg(this)"><div class="caption">#1</div></div>
-<div class="item"><img src="c2.jpg" onclick="openImg(this)"><div class="caption">#2</div></div>
-<div class="item"><img src="c3.jpg" onclick="openImg(this)"><div class="caption">#3</div></div>
-<div class="item"><img src="c4.jpg" onclick="openImg(this)"><div class="caption">#4</div></div>
-<div class="item"><img src="c5.jpg" onclick="openImg(this)"><div class="caption">#5</div></div>
-<div class="item"><img src="c6.jpg" onclick="openImg(this)"><div class="caption">#6</div></div>
-<div class="item"><img src="c7.jpg" onclick="openImg(this)"><div class="caption">#7</div></div>
-<div class="item"><img src="c8.jpg" onclick="openImg(this)"><div class="caption">#8</div></div>
-<div class="item"><img src="c9.jpg" onclick="openImg(this)"><div class="caption">#9</div></div>
-<div class="item"><img src="c10.jpg" onclick="openImg(this)"><div class="caption">#10</div></div>
-<div class="item"><img src="c11.jpg" onclick="openImg(this)"><div class="caption">#11</div></div>
-<div class="item"><img src="c12.jpg" onclick="openImg(this)"><div class="caption">#12</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c1.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#1</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c2.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#2</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c3.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#3</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c4.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#4</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c5.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c6.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#6</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c7.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#7</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c8.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#8</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c9.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#9</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c10.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#10</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c11.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#11</div></div>
+<div class="item"><img class="lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="c12.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#12</div></div>
 </div>
 </div>
 
@@ -604,7 +621,7 @@ img {
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via">
+    <img class="book-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
   </div>
   <div class="book-info">
     <p class="book-year">2026</p>
@@ -620,7 +637,7 @@ img {
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica">
+    <img class="book-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="lazy">
   </div>
   <div class="book-info">
     <p class="book-year">2021</p>
@@ -636,7 +653,7 @@ img {
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/vita.jpg" alt="La vita accade">
+    <img class="book-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="lazy">
   </div>
   <div class="book-info">
     <p class="book-year">2016</p>
@@ -695,7 +712,7 @@ Instagram: @liviospano_
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/vita.jpg" alt="La vita accade">
+    <img class="book-reader-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="lazy">
     <h2>La vita accade</h2>
     <p class="book-reader-meta">Edizioni Amande</p>
   </div>
@@ -746,7 +763,7 @@ l’infinità di questo tetto universale.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica">
+    <img class="book-reader-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="lazy">
     <h2>Esserci a fatica</h2>
     <p class="book-reader-meta">Poesie di Livio Spanò<br>Polaroid di Enza Amato<br>Edizioni Underground</p>
   </div>
@@ -784,119 +801,119 @@ una gigantesca macchia.</div>
 
   <div class="polaroid-gallery">
   <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-01.jpg" alt="Polaroid 01">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-01.jpg" alt="Polaroid 01" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-02.jpg" alt="Polaroid 02">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-02.jpg" alt="Polaroid 02" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-03.jpg" alt="Polaroid 03">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-03.jpg" alt="Polaroid 03" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-04.jpg" alt="Polaroid 04">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-04.jpg" alt="Polaroid 04" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-05.jpg" alt="Polaroid 05">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-05.jpg" alt="Polaroid 05" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-06.jpg" alt="Polaroid 06">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-06.jpg" alt="Polaroid 06" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-07.jpg" alt="Polaroid 07">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-07.jpg" alt="Polaroid 07" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-08.jpg" alt="Polaroid 08">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-08.jpg" alt="Polaroid 08" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-09.jpg" alt="Polaroid 09">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-09.jpg" alt="Polaroid 09" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-10.jpg" alt="Polaroid 10">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-10.jpg" alt="Polaroid 10" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-11.jpg" alt="Polaroid 11">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-11.jpg" alt="Polaroid 11" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-12.jpg" alt="Polaroid 12">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-12.jpg" alt="Polaroid 12" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-13.jpg" alt="Polaroid 13">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-13.jpg" alt="Polaroid 13" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-14.jpg" alt="Polaroid 14">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-14.jpg" alt="Polaroid 14" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-15.jpg" alt="Polaroid 15">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-15.jpg" alt="Polaroid 15" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-16.jpg" alt="Polaroid 16">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-16.jpg" alt="Polaroid 16" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-17.jpg" alt="Polaroid 17">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-17.jpg" alt="Polaroid 17" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-18.jpg" alt="Polaroid 18">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-18.jpg" alt="Polaroid 18" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-19.jpg" alt="Polaroid 19">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-19.jpg" alt="Polaroid 19" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-20.jpg" alt="Polaroid 20">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-20.jpg" alt="Polaroid 20" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-21.jpg" alt="Polaroid 21">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-21.jpg" alt="Polaroid 21" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-22.jpg" alt="Polaroid 22">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-22.jpg" alt="Polaroid 22" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-23.jpg" alt="Polaroid 23">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-23.jpg" alt="Polaroid 23" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-24.jpg" alt="Polaroid 24">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-24.jpg" alt="Polaroid 24" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-25.jpg" alt="Polaroid 25">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-25.jpg" alt="Polaroid 25" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-26.jpg" alt="Polaroid 26">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-26.jpg" alt="Polaroid 26" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-27.jpg" alt="Polaroid 27">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-27.jpg" alt="Polaroid 27" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-28.jpg" alt="Polaroid 28">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-28.jpg" alt="Polaroid 28" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img loading="lazy" onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-29.jpg" alt="Polaroid 29">
+  <img class="lazy-img" onclick="event.stopPropagation(); openPolaroid(this)" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/esserci/polaroids/polaroid-29.jpg" alt="Polaroid 29" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
   </div>
@@ -911,7 +928,7 @@ una gigantesca macchia.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via">
+    <img class="book-reader-cover lazy-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
     <h2>Chiudi la porta prima di andare via<br>Il futuro era ieri</h2>
     <p class="book-reader-meta">Edizioni Underground</p>
   </div>
@@ -1028,6 +1045,58 @@ Powered by INEBRIUS
 
 const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
+const tinyPlaceholder = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+
+function loadLazyImage(img){
+  if (!img || !img.dataset || !img.dataset.src) return;
+  if (img.src === img.dataset.src) return;
+
+  img.onload = function(){
+    img.classList.add("loaded");
+  };
+
+  img.src = img.dataset.src;
+}
+
+function loadSectionImages(id){
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const firstImages = section.querySelectorAll("img.lazy-img");
+  firstImages.forEach(function(img, index){
+    if (index < 2) {
+      loadLazyImage(img);
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          loadLazyImage(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "350px 0px" });
+
+    firstImages.forEach(function(img){
+      observer.observe(img);
+    });
+  } else {
+    firstImages.forEach(loadLazyImage);
+  }
+}
+
+function prepareLazyImages(container){
+  const root = container || document;
+  const images = root.querySelectorAll("img.lazy-img");
+  images.forEach(function(img){
+    img.setAttribute("draggable", "false");
+    img.setAttribute("oncontextmenu", "return false");
+  });
+}
+
+
 function getSavedSection(){
   try {
     const saved = sessionStorage.getItem("livioActiveSection");
@@ -1048,6 +1117,8 @@ function showSection(id){
   });
 
   target.classList.add("active");
+  prepareLazyImages(target);
+  loadSectionImages(id);
 
   try {
     sessionStorage.setItem("livioActiveSection", id);
@@ -1094,10 +1165,12 @@ function openImg(img){
   const overlayImg = document.getElementById("overlay-img");
   const text = document.getElementById("overlay-text");
 
-  overlay.style.display = "flex";
-  overlayImg.src = img.src;
+  const imageSource = img.getAttribute("data-src") || img.currentSrc || img.src;
 
-  const file = img.src.split("/").pop();
+  overlay.style.display = "flex";
+  overlayImg.src = imageSource;
+
+  const file = imageSource.split("/").pop();
 
   if(file === "9.jpg"){
     text.innerHTML = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
@@ -1117,7 +1190,7 @@ function openPolaroid(img){
   const viewer = document.getElementById("polaroid-viewer");
   const viewerImg = document.getElementById("polaroid-viewer-img");
 
-  viewerImg.src = img.currentSrc || img.src;
+  viewerImg.src = img.getAttribute("data-src") || img.currentSrc || img.src;
   viewer.style.display = "flex";
 }
 
@@ -1141,6 +1214,8 @@ function openBook(book){
   overlayImg.src = "";
 
   text.innerHTML = template ? template.innerHTML : "";
+  prepareLazyImages(text);
+  loadSectionImages("overlay");
 }
 
 function closeImg(){
