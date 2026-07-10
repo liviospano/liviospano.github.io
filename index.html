@@ -64,12 +64,11 @@ nav a:hover { opacity:1; }
   align-items:center;
   overflow:hidden;
   box-sizing:border-box;
-  padding:70px 20px 60px;
+  padding:65px 20px 55px;
 }
 
 .intro-content {
   width:100%;
-  max-width:1400px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -78,10 +77,22 @@ nav a:hover { opacity:1; }
   box-sizing:border-box;
 }
 
+.signature {
+  display:block;
+  width:90vw;
+  max-width:1400px;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  filter:invert(1);
+  opacity:0;
+  margin:0;
+  animation:fadeIn 1.3s forwards, fadeOut 1.1s forwards 2.7s;
+}
+
 .signature-subtitle {
-  margin:18px 20px 0;
+  margin:clamp(-85px, -5.5vw, -38px) 20px 0;
   max-width:700px;
-  flex:0 0 auto;
   font-size:clamp(12px, 1.4vw, 17px);
   line-height:1.5;
   letter-spacing:0.5px;
@@ -91,7 +102,57 @@ nav a:hover { opacity:1; }
   opacity:0;
   position:relative;
   z-index:2;
-  animation:subtitleFadeIn 1.3s forwards, subtitleFadeOut 1.1s forwards 2.7s;
+  animation:subtitleFadeIn 1.3s forwards,
+             subtitleFadeOut 1.1s forwards 2.7s;
+}
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes subtitleFadeOut {
+  from {
+    opacity:1;
+  }
+
+  to {
+    opacity:0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity:0;
+  }
+}
+
+@media (max-height:700px) {
+  #intro {
+    padding-top:55px;
+    padding-bottom:45px;
+  }
+
+  .signature {
+    width:82vw;
+  }
+
+  .signature-subtitle {
+    margin-top:clamp(-68px, -4.8vw, -32px);
+  }
 }
 
 @keyframes subtitleFadeIn {
