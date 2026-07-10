@@ -21,6 +21,7 @@
 <meta name="twitter:image" content="https://www.liviospano.com/images/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
+<link rel="preload" as="image" href="1.jpg" fetchpriority="high">
 
 <style>
 
@@ -454,6 +455,86 @@ nav a:hover { opacity:1; }
   color:black;
 }
 
+/* CONTACT */
+.contact-shell {
+  min-height:calc(100vh - 180px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px 100px;
+  box-sizing:border-box;
+}
+
+.contact-card {
+  width:min(760px, 100%);
+  text-align:center;
+  padding:64px 42px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(0,0,0,0.28);
+}
+
+.contact-kicker {
+  margin:0 0 20px;
+  font-size:10px;
+  letter-spacing:4px;
+  opacity:0.48;
+}
+
+.contact-card h1 {
+  margin:0 0 24px;
+  font-size:clamp(30px, 5vw, 56px);
+  line-height:1.08;
+  font-weight:normal;
+}
+
+.contact-copy {
+  max-width:580px;
+  margin:0 auto 34px;
+  font-size:14px;
+  line-height:1.75;
+  opacity:0.72;
+}
+
+.contact-links {
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.contact-link {
+  display:inline-block;
+  min-width:130px;
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,0.55);
+  color:white;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:2px;
+  box-sizing:border-box;
+}
+
+.contact-link:hover {
+  background:white;
+  color:black;
+}
+
+@media (max-width:760px) {
+  .contact-card {
+    padding:48px 24px;
+  }
+
+  .contact-links {
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .contact-link {
+    width:100%;
+  }
+}
+
 /* PRIVATE ADMIN LINK */
 #private-admin-link {
   display:none;
@@ -497,6 +578,23 @@ nav a:hover { opacity:1; }
   .book-reader {
     padding:30px 22px;
   }
+}
+
+/* IMAGE LOADING SURFACE */
+#others .item,
+#colours .item,
+.book-cover-box,
+.book-reader-header,
+.polaroid-frame {
+  background-color:#000;
+}
+
+#others .item img,
+#colours .item img,
+.book-cover,
+.book-reader-cover,
+.polaroid-frame img {
+  background-color:#000;
 }
 
 /* IMAGE PROTECTION AND COPYRIGHT */
@@ -577,9 +675,9 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item"><img  src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Mother, does this world deserve me?</div></div>
-<div class="item"><img  src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Turbo Island in my mind</div></div>
-<div class="item"><img  src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Is there really an age for being happy?</div></div>
+<div class="item"><img src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="auto"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="auto"><div class="caption">Is there really an age for being happy?</div></div>
 <div class="item"><img  src="4.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Wrapped in urban decay</div></div>
 <div class="item"><img  src="5.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Two distances, same street</div></div>
 <div class="item"><img  src="6.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">A piece of childhood has remained before me.</div></div>
@@ -695,11 +793,29 @@ In 2026, he encountered photography as a language he could understand, a way to 
 
 <!-- CONTACT -->
 <div id="contact" class="section">
-<div style="text-align:center;margin-top:120px;">
-Instagram: @liviospano_
-</div>
+  <div class="contact-shell">
+    <div class="contact-card">
+      <p class="contact-kicker">CONTACT</p>
+      <h1>Let’s create something meaningful.</h1>
+      <p class="contact-copy">
+        For collaborations, exhibitions, editorial projects and print enquiries,
+        get in touch through Instagram.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link"
+           href="https://www.instagram.com/liviospano_/"
+           target="_blank"
+           rel="noopener noreferrer">INSTAGRAM</a>
+        <a class="contact-link"
+           href="https://www.edizioniunderground.it/liviospan%C3%B2"
+           target="_blank"
+           rel="noopener noreferrer">BOOKS</a>
+      </div>
+    </div>
+  </div>
 </div>
 
+</div>
 </div>
 
 
@@ -1043,7 +1159,25 @@ Powered by INEBRIUS
 
 const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
 
+function warmFirstSectionImages(target){
+  if (!target) return;
 
+  const images = target.querySelectorAll("img");
+
+  images.forEach(function(img, index){
+    if (index >= 3) return;
+
+    img.loading = "eager";
+
+    if (index === 0) {
+      img.fetchPriority = "high";
+    }
+
+    if (typeof img.decode === "function") {
+      img.decode().catch(function(){});
+    }
+  });
+}
 
 function getSavedSection(){
   try {
@@ -1059,6 +1193,8 @@ function getSavedSection(){
 function showSection(id){
   const target = document.getElementById(id);
   if (!target) return;
+
+  warmFirstSectionImages(target);
 
   document.querySelectorAll(".section").forEach(function(sec){
     sec.classList.remove("active");
@@ -1083,7 +1219,7 @@ function showMainContentImmediately(){
   restoreSection();
 }
 
-window.onload = function(){
+document.addEventListener("DOMContentLoaded", function(){
   restoreSection();
 
   let introAlreadySeen = false;
@@ -1104,7 +1240,7 @@ window.onload = function(){
 
     showMainContentImmediately();
   }, 3800);
-};
+});
 
 function openImg(img){
   const overlay = document.getElementById("overlay");
