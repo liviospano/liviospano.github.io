@@ -64,11 +64,12 @@ nav a:hover { opacity:1; }
   align-items:center;
   overflow:hidden;
   box-sizing:border-box;
-  padding:65px 20px 55px;
+  padding:70px 20px 72px;
 }
 
 .intro-content {
   width:100%;
+  max-width:960px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -79,11 +80,11 @@ nav a:hover { opacity:1; }
 
 .signature {
   display:block;
-  width:90vw;
-  max-width:1400px;
+  width:min(82vw, 900px);
+  max-width:100%;
   height:auto;
-  max-height:none;
   object-fit:contain;
+  flex:0 0 auto;
   filter:invert(1);
   opacity:0;
   margin:0;
@@ -91,7 +92,7 @@ nav a:hover { opacity:1; }
 }
 
 .signature-subtitle {
-  margin:clamp(-85px, -5.5vw, -38px) 20px 0;
+  margin:18px 20px 0;
   max-width:700px;
   font-size:clamp(12px, 1.4vw, 17px);
   line-height:1.5;
@@ -100,8 +101,6 @@ nav a:hover { opacity:1; }
   font-weight:normal;
   color:rgba(255,255,255,0.78);
   opacity:0;
-  position:relative;
-  z-index:2;
   animation:subtitleFadeIn 1.3s forwards,
              subtitleFadeOut 1.1s forwards 2.7s;
 }
@@ -139,59 +138,6 @@ nav a:hover { opacity:1; }
     opacity:0;
   }
 }
-
-@media (max-height:700px) {
-  #intro {
-    padding-top:55px;
-    padding-bottom:45px;
-  }
-
-  .signature {
-    width:82vw;
-  }
-
-  .signature-subtitle {
-    margin-top:clamp(-68px, -4.8vw, -32px);
-  }
-}
-
-@keyframes subtitleFadeIn {
-  from { opacity:0; transform:translateY(8px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-@keyframes subtitleFadeOut {
-  from { opacity:1; }
-  to { opacity:0; }
-}
-
-.signature {
-  display:block;
-  width:auto;
-  height:auto;
-  max-width:90vw;
-  max-height:52vh;
-  max-height:52svh;
-  object-fit:contain;
-  flex:0 1 auto;
-  filter:invert(1);
-  opacity:0;
-  animation:fadeIn 1.3s forwards, fadeOut 1.1s forwards 2.7s;
-}
-
-@media (max-height:700px) {
-  .signature {
-    max-height:42vh;
-    max-height:42svh;
-  }
-
-  .signature-subtitle {
-    margin-top:12px;
-  }
-}
-
-@keyframes fadeIn { to {opacity:1;} }
-@keyframes fadeOut { to {opacity:0;} }
 
 /* CONTENUTO */
 .main-content {
