@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Livio Spanò, Photography and Books</title>
+<title>Livio Spanò, Books and Photography</title>
 <meta name="description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Livio Spanò, Photography and Books">
+<meta property="og:title" content="Livio Spanò, Books and Photography">
 <meta property="og:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 <meta property="og:url" content="https://www.liviospano.com/">
 <meta property="og:image" content="https://www.liviospano.com/social-preview.jpg">
+<meta property="og:image:secure_url" content="https://www.liviospano.com/social-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Livio Spanò, Books and Photography">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Livio Spanò">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Livio Spanò, Photography and Books">
+<meta name="twitter:title" content="Livio Spanò, Books and Photography">
 <meta name="twitter:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
@@ -707,6 +710,7 @@ img {
 <a onclick="showSection('others')">THE OTHERS AND I</a>
 <a onclick="showSection('colours')">COLOURS EDITION</a>
 <a onclick="showSection('books')">BOOKS</a>
+<a onclick="showSection('english-poetry')">ENGLISH POETRY</a>
 <a onclick="showSection('about')">ABOUT</a>
 <a onclick="showSection('contact')">CONTACT</a>
 </nav>
@@ -818,6 +822,17 @@ img {
 </div>
 
 
+<!-- ENGLISH POETRY -->
+<div id="english-poetry" class="section">
+<h1 style="text-align:center;">ORIGINAL ENGLISH POETRY</h1>
+
+<div style="max-width:700px; margin:60px auto 120px auto; text-align:center; line-height:1.6; font-size:14px;">
+<p style="opacity:0.72;">Poems written directly in English, not translated from Italian.</p>
+<div class="english-poetry-list"></div>
+</div>
+
+</div>
+
 <!-- ABOUT -->
 <div id="about" class="section">
 
@@ -858,7 +873,10 @@ In 2026, he encountered photography as a language he could understand, a way to 
            href="https://www.instagram.com/liviospano_/"
            target="_blank"
            rel="noopener noreferrer">INSTAGRAM</a>
-        <span class="contact-link">FACEBOOK: LIVIO SPANÒ</span>
+        <a class="contact-link"
+           href="https://www.facebook.com/Livio.Spano"
+           target="_blank"
+           rel="noopener noreferrer">FACEBOOK</a>
         <a class="contact-link"
            href="mailto:liviospano3@gmail.com">EMAIL: LIVIOSPANO3@GMAIL.COM</a>
       </div>
@@ -1207,7 +1225,7 @@ Powered by INEBRIUS
 
 <script>
 
-const VALID_SECTIONS = ["others", "colours", "books", "about", "contact"];
+const VALID_SECTIONS = ["others", "colours", "books", "english-poetry", "about", "contact"];
 
 
 
