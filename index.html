@@ -39,18 +39,55 @@ nav a:hover { opacity:1; }
 /* INTRO */
 #intro {
   height:100vh;
+  height:100svh;
+  min-height:520px;
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
+  box-sizing:border-box;
+  padding:70px 20px 72px;
+}
+
+.intro-content {
+  width:100%;
+  max-width:960px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-sizing:border-box;
 }
 
 .signature {
-  width:90vw;
-  max-width:1400px;
+  display:block;
+  width:min(76vw, 640px);
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  flex:0 0 auto;
   filter:invert(1);
   opacity:0;
+  margin:0;
   animation:fadeIn 2s forwards, fadeOut 2s forwards 4s;
 }
+
+.signature-subtitle {
+  margin:18px 20px 0;
+  max-width:700px;
+  font-size:clamp(12px, 1.4vw, 17px);
+  line-height:1.5;
+  letter-spacing:0.5px;
+  font-style:italic;
+  font-weight:normal;
+  color:rgba(255,255,255,0.78);
+  opacity:0;
+  animation:subtitleFadeIn 2s forwards, subtitleFadeOut 2s forwards 4s;
+}
+
+@keyframes subtitleFadeIn { to { opacity:1; } }
+@keyframes subtitleFadeOut { to { opacity:0; } }
 
 @keyframes fadeIn { to {opacity:1;} }
 @keyframes fadeOut { to {opacity:0;} }
@@ -536,7 +573,10 @@ img {
 
 <!-- INTRO -->
 <div id="intro">
-<img src="firma.png" class="signature">
+  <div class="intro-content">
+    <img src="firma.png" class="signature" alt="Livio Spanò">
+    <p class="signature-subtitle">"I've no use for bodies. It's silent immobility that interests me"</p>
+  </div>
 </div>
 
 <!-- CONTENUTO -->
