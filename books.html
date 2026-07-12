@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOOKS | Livio Spanò, Books and Photography</title>
+<meta name="description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
+<link rel="canonical" href="https://www.liviospano.com/books.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="BOOKS | Livio Spanò, Books and Photography">
+<meta property="og:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
+<meta property="og:url" content="https://www.liviospano.com/books.html">
+<meta property="og:image" content="https://www.liviospano.com/social-preview.jpg">
+<meta property="og:image:secure_url" content="https://www.liviospano.com/social-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Livio Spanò, Books and Photography">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Livio Spanò">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BOOKS | Livio Spanò, Books and Photography">
+<meta name="twitter:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
+<meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
+
+<link rel="preload" as="image" href="firma.png">
+
+<style>
+
+/* BASE */
+body {
+  margin:0;
+  background: radial-gradient(circle at center, #1c1c1c 0%, #000000 85%);
+  color:white;
+  font-family:Arial;
+}
+
+/* MENU */
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  text-align:center;
+  padding:15px;
+  background:rgba(0,0,0,0.9);
+  z-index:1000;
+}
+
+nav a {
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-size:12px;
+  cursor:pointer;
+  opacity:0.7;
+}
+
+nav a:hover { opacity:1; }
+
+.mobile-nav-toggle,
+.mobile-nav-menu {
+  display:none;
+}
+
+/* INTRO */
+#intro {
+  height:100vh;
+  height:100svh;
+  min-height:520px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  box-sizing:border-box;
+  padding:70px 20px 72px;
+}
+
+.intro-content {
+  width:100%;
+  max-width:960px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  box-sizing:border-box;
+}
+
+.signature {
+  display:block;
+  width:min(76vw, 640px);
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+  flex:0 0 auto;
+  filter:invert(1);
+  opacity:0;
+  margin:0;
+  animation:fadeIn 1.3s forwards, fadeOut 1.1s forwards 2.7s;
+}
+
+.signature-subtitle {
+  margin:18px 20px 0;
+  max-width:700px;
+  font-size:clamp(12px, 1.4vw, 17px);
+  line-height:1.5;
+  letter-spacing:0.5px;
+  font-style:italic;
+  font-weight:normal;
+  color:rgba(255,255,255,0.78);
+  opacity:0;
+  animation:subtitleFadeIn 1.3s forwards,
+             subtitleFadeOut 1.1s forwards 2.7s;
+}
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes subtitleFadeOut {
+  from {
+    opacity:1;
+  }
+
+  to {
+    opacity:0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity:0;
+  }
+}
+
+/* CONTENUTO */
+.main-content {
+  opacity:0;
+  display:none;
+  transition:opacity 1.5s ease;
+}
+
+/* SEZIONI */
+.section {
+  display:none;
+  padding-top:100px;
+  min-height:100vh;
+}
+
+.active { display:block; }
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+  gap:10px;
+  padding:40px;
+}
+
+/* ITEM */
+.item { position:relative; }
+
+/* IMG */
+.item img {
+  width:100%;
+  cursor:pointer;
+  transition:transform 0.8s ease;
+}
+
+.item:hover img {
+  transform:scale(1.06);
+}
+
+/* CAPTION */
+.caption {
+  position:absolute;
+  bottom:15px;
+  left:15px;
+  font-size:13px;
+  background:rgba(0,0,0,0.5);
+  padding:6px 8px;
+}
+
+/* OVERLAY */
+#overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#overlay img {
+  max-width:90vw;
+  max-height:70vh;
+}
+
+#overlay-text {
+  margin-top:20px;
+  max-width:500px;
+  text-align:center;
+}
+
+/* PAGINE TESTO */
+.page-text {
+  text-align:center;
+  margin-top:150px;
+  font-size:18px;
+  opacity:0.6;
+}
+
+/* FOOTER GLOBALE */
+.global-footer {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:11px;
+  opacity:0.5;
+  visibility:visible;
+  padding:10px 0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(5px);
+  letter-spacing:1px;
+  z-index:1000;
+}
+
+/* BOOKS LAYOUT */
+.books-title {
+  text-align:center;
+  letter-spacing:2px;
+  font-size:28px;
+  margin:20px 0 60px 0;
+}
+
+.books-list {
+  max-width:1050px;
+  margin:0 auto 120px auto;
+  padding:0 28px;
+}
+
+.book-row {
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:48px;
+  align-items:center;
+  padding:60px 0;
+  border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+.book-row:last-child {
+  border-bottom:none;
+}
+
+.book-cover-box {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.book-cover {
+  width:100%;
+  max-width:240px;
+  max-height:340px;
+  object-fit:contain;
+  box-shadow:0 24px 60px rgba(0,0,0,0.45);
+}
+
+.book-info {
+  text-align:left;
+}
+
+.book-year {
+  font-size:11px;
+  letter-spacing:3px;
+  opacity:0.45;
+  margin:0 0 16px 0;
+}
+
+.book-info h2 {
+  font-size:28px;
+  line-height:1.18;
+  font-weight:normal;
+  margin:0 0 14px 0;
+}
+
+.book-meta {
+  font-size:13px;
+  letter-spacing:1px;
+  opacity:0.65;
+  margin:0 0 22px 0;
+}
+
+.book-description {
+  max-width:620px;
+  font-size:14px;
+  line-height:1.7;
+  opacity:0.78;
+  margin:0 0 28px 0;
+}
+
+.book-actions {
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.book-button {
+  border:1px solid rgba(255,255,255,0.55);
+  background:transparent;
+  color:white;
+  padding:10px 18px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-decoration:none;
+  cursor:pointer;
+  font-family:Arial;
+}
+
+.book-button:hover {
+  background:white;
+  color:black;
+}
+
+/* BOOK READER OVERLAY */
+#overlay.book-mode {
+  padding:48px 0;
+  box-sizing:border-box;
+}
+
+#overlay.book-mode #overlay-img {
+  display:none;
+}
+
+#overlay.book-mode #overlay-text {
+  width:min(920px, 90vw);
+  max-width:none;
+  max-height:86vh;
+  margin-top:0;
+  overflow-y:auto;
+  text-align:left;
+}
+
+.book-reader {
+  background:#050505;
+  border:1px solid rgba(255,255,255,0.14);
+  padding:46px;
+  box-sizing:border-box;
+  line-height:1.75;
+  font-size:15px;
+}
+
+.book-reader-header {
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.book-reader-cover {
+  max-width:240px;
+  max-height:340px;
+  object-fit:contain;
+  margin:0 auto 32px auto;
+  display:block;
+  box-shadow:0 24px 60px rgba(0,0,0,0.55);
+}
+
+.book-reader h2 {
+  font-size:30px;
+  line-height:1.2;
+  font-weight:normal;
+  margin:0 0 14px 0;
+}
+
+.book-reader h3 {
+  font-size:18px;
+  font-weight:normal;
+  letter-spacing:1px;
+  margin:52px 0 20px 0;
+}
+
+.book-reader h4 {
+  font-size:14px;
+  font-weight:normal;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin:46px 0 18px 0;
+}
+
+.book-reader-meta {
+  opacity:0.62;
+  font-size:13px;
+  letter-spacing:1px;
+  margin:0;
+}
+
+.book-reader p {
+  margin:0 0 20px 0;
+}
+
+.poem {
+  white-space:pre-line;
+  line-height:1.95;
+  font-size:15px;
+  margin:18px 0 42px 0;
+}
+
+.note {
+  opacity:0.75;
+  font-size:13px;
+}
+
+.book-reader-actions {
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin:34px 0 0 0;
+  flex-wrap:wrap;
+}
+
+.book-close {
+  position:sticky;
+  top:0;
+  float:right;
+  border:1px solid rgba(255,255,255,0.35);
+  background:black;
+  color:white;
+  padding:8px 12px;
+  font-size:10px;
+  letter-spacing:2px;
+  cursor:pointer;
+  z-index:2;
+}
+
+.book-close:hover {
+  background:white;
+  color:black;
+}
+
+.book-separator {
+  height:1px;
+  background:rgba(255,255,255,0.14);
+  margin:52px 0;
+}
+
+.polaroid-gallery {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:52px;
+  margin-top:30px;
+}
+
+.polaroid-frame {
+  margin:0;
+  text-align:center;
+}
+
+.polaroid-frame img {
+  width:min(680px, 100%);
+  max-height:78vh;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+  cursor:zoom-in;
+}
+
+.polaroid-frame figcaption {
+  margin-top:12px;
+  font-size:11px;
+  letter-spacing:1px;
+  opacity:0.45;
+}
+
+/* POLAROID VIEWER */
+#polaroid-viewer {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.97);
+  z-index:10000;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  box-sizing:border-box;
+}
+
+#polaroid-viewer img {
+  max-width:94vw;
+  max-height:92vh;
+  object-fit:contain;
+}
+
+.polaroid-viewer-close {
+  position:fixed;
+  top:22px;
+  right:24px;
+  border:1px solid rgba(255,255,255,0.5);
+  background:black;
+  color:white;
+  padding:9px 14px;
+  font-size:10px;
+  letter-spacing:2px;
+  cursor:pointer;
+  z-index:10001;
+}
+
+.polaroid-viewer-close:hover {
+  background:white;
+  color:black;
+}
+
+/* CONTACT */
+.contact-shell {
+  min-height:calc(100vh - 180px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 24px 100px;
+  box-sizing:border-box;
+}
+
+.contact-card {
+  width:min(760px, 100%);
+  text-align:center;
+  padding:64px 42px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(0,0,0,0.28);
+}
+
+.contact-kicker {
+  margin:0 0 20px;
+  font-size:10px;
+  letter-spacing:4px;
+  opacity:0.48;
+}
+
+.contact-card h1 {
+  margin:0 0 24px;
+  font-size:clamp(30px, 5vw, 56px);
+  line-height:1.08;
+  font-weight:normal;
+}
+
+.contact-copy {
+  max-width:580px;
+  margin:0 auto 34px;
+  font-size:14px;
+  line-height:1.75;
+  opacity:0.72;
+}
+
+.contact-links {
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.contact-link {
+  display:inline-block;
+  min-width:130px;
+  padding:12px 18px;
+  border:1px solid rgba(255,255,255,0.55);
+  color:white;
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:2px;
+  box-sizing:border-box;
+}
+
+.contact-link:hover {
+  background:white;
+  color:black;
+}
+
+@media (max-width:760px) {
+  .contact-card {
+    padding:48px 24px;
+  }
+
+  .contact-links {
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .contact-link {
+    width:100%;
+  }
+}
+
+/* ENGLISH POETRY */
+.english-poetry-shell {
+  max-width:1000px;
+  margin:60px auto 140px auto;
+  padding:0 24px;
+}
+
+.english-poetry-layout {
+  display:grid;
+  grid-template-columns:minmax(0, 680px) minmax(180px, 220px);
+  gap:36px;
+  align-items:start;
+  justify-content:center;
+}
+
+.english-poetry-content {
+  width:100%;
+}
+
+.english-poetry-header {
+  text-align:center;
+  margin:0 0 76px 0;
+}
+
+.english-poetry-header p {
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+  opacity:0.72;
+}
+
+.english-poetry-list {
+  width:100%;
+}
+
+.poem-entry {
+  margin:0 0 112px 0;
+  padding:0 0 108px 0;
+  border-bottom:1px solid rgba(255,255,255,0.14);
+  scroll-margin-top:84px;
+}
+
+.poem-entry:last-child {
+  margin-bottom:0;
+  padding-bottom:0;
+  border-bottom:0;
+}
+
+.poem-title {
+  margin:0 0 32px 0;
+  text-align:left;
+  font-size:17px;
+  line-height:1.4;
+  font-weight:normal;
+}
+
+.poem-credit {
+  margin:-24px 0 32px 0;
+  text-align:left;
+  font-size:13px;
+  line-height:1.5;
+  font-style:italic;
+  opacity:0.68;
+}
+
+.poem-text {
+  margin:0;
+  text-align:left;
+  white-space:pre-line;
+  font-size:16px;
+  line-height:1.72;
+  opacity:0.86;
+}
+
+/* POEM ARCHIVE */
+.poetry-archive {
+  width:100%;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(0,0,0,0.32);
+}
+
+.poetry-archive-toggle {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border:0;
+  background:transparent;
+  color:white;
+  padding:14px 14px;
+  font-family:Arial;
+  font-size:10px;
+  letter-spacing:2px;
+  text-align:left;
+  cursor:pointer;
+}
+
+.poetry-archive-toggle:focus-visible,
+.poetry-archive-list a:focus-visible {
+  outline:1px solid white;
+  outline-offset:3px;
+}
+
+.poetry-archive-indicator {
+  flex:0 0 auto;
+  font-size:14px;
+  line-height:1;
+  opacity:0.72;
+}
+
+.poetry-archive-list {
+  border-top:1px solid rgba(255,255,255,0.12);
+  padding:8px 0;
+}
+
+.poetry-archive-list[hidden] {
+  display:none;
+}
+
+.poetry-archive-list a {
+  display:block;
+  color:white;
+  padding:10px 14px;
+  font-size:11px;
+  line-height:1.45;
+  letter-spacing:1px;
+  text-decoration:none;
+  opacity:0.72;
+}
+
+.poetry-archive-list a:hover {
+  opacity:1;
+}
+
+@media (max-width:900px) {
+  .english-poetry-layout {
+    display:flex;
+    flex-direction:column;
+    gap:46px;
+  }
+
+  .english-poetry-content {
+    order:2;
+  }
+
+  .poetry-archive {
+    order:1;
+  }
+}
+
+@media (max-width:760px) {
+  .english-poetry-shell {
+    margin:52px auto 120px auto;
+    padding:0 22px;
+  }
+
+  .english-poetry-header {
+    margin-bottom:62px;
+  }
+
+  .poem-entry {
+    margin-bottom:96px;
+    padding-bottom:92px;
+  }
+
+  .poem-title {
+    font-size:16px;
+  }
+
+  .poem-text {
+    font-size:15px;
+    line-height:1.7;
+  }
+}
+
+/* PRIVATE ADMIN LINK */
+#private-admin-link {
+  display:none;
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:9999;
+  border:1px solid rgba(255,255,255,0.35);
+  background:rgba(0,0,0,0.82);
+  color:white;
+  padding:9px 12px;
+  font-size:10px;
+  letter-spacing:2px;
+  text-decoration:none;
+}
+#private-admin-link:hover {
+  background:white;
+  color:black;
+}
+
+@media (max-width:768px) {
+  nav {
+    box-sizing:border-box;
+    min-height:44px;
+  }
+
+  nav > a {
+    display:none;
+  }
+
+  .mobile-nav-toggle {
+    position:absolute;
+    top:50%;
+    right:16px;
+    width:34px;
+    height:30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    padding:0;
+    border:1px solid rgba(255,255,255,0.45);
+    background:transparent;
+    color:white;
+    cursor:pointer;
+  }
+
+  .mobile-nav-toggle span {
+    display:block;
+    width:18px;
+    height:1px;
+    background:white;
+  }
+
+  .mobile-nav-toggle:focus-visible,
+  .mobile-nav-menu a:focus-visible {
+    outline:1px solid white;
+    outline-offset:3px;
+  }
+
+  .mobile-nav-menu {
+    position:fixed;
+    top:44px;
+    left:0;
+    right:0;
+    z-index:1001;
+    display:none;
+    padding:8px 0;
+    box-sizing:border-box;
+    background:rgba(0,0,0,0.94);
+    text-align:center;
+  }
+
+  .mobile-nav-menu.is-open {
+    display:block;
+  }
+
+  .mobile-nav-menu a {
+    display:block;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:white;
+    padding:14px 20px;
+    font-family:Arial;
+    font-size:12px;
+    cursor:pointer;
+    opacity:0.82;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+
+  .mobile-nav-menu a:hover {
+    opacity:1;
+  }
+}
+
+@media (max-width:760px) {
+  .book-row {
+    grid-template-columns:1fr;
+    gap:26px;
+    padding:46px 0;
+  }
+
+  .book-info {
+    text-align:center;
+  }
+
+  .book-description {
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .book-actions {
+    justify-content:center;
+  }
+
+  .book-reader {
+    padding:30px 22px;
+  }
+}
+
+/* IMAGE PROTECTION AND COPYRIGHT */
+img {
+  -webkit-user-drag:none;
+  user-drag:none;
+  -webkit-touch-callout:none;
+  user-select:none;
+}
+
+#others .item,
+#colours .item {
+  position:relative;
+  overflow:hidden;
+  line-height:0;
+}
+
+#others .item img,
+#colours .item img {
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+}
+
+#others .item::after,
+#colours .item::after {
+  content:"©";
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:18px;
+  height:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  font-size:11px;
+  line-height:1;
+  color:rgba(255,255,255,0.95);
+  background:rgba(0,0,0,0.62);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:80;
+}
+
+#others .item .caption,
+#colours .item .caption {
+  z-index:20;
+  line-height:normal;
+}
+
+</style>
+</head>
+<body>
+<nav>
+<a href="others.html">THE OTHERS AND I</a>
+<a href="colours.html">COLOURS EDITION</a>
+<a href="books.html">BOOKS</a>
+<a href="english-poems.html">ENGLISH POEMS</a>
+<a href="about.html">ABOUT</a>
+<a href="contact.html">CONTACT</a>
+<button id="mobile-nav-toggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu" onclick="toggleMobileMenu()">
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+  <span aria-hidden="true"></span>
+</button>
+<div id="mobile-nav-menu" class="mobile-nav-menu" hidden>
+  <a href="others.html">THE OTHERS AND I</a>
+  <a href="colours.html">COLOURS EDITION</a>
+  <a href="books.html">BOOKS</a>
+  <a href="english-poems.html">ENGLISH POEMS</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
+</div>
+</nav>
+<div class="main-content" style="display:block; opacity:1;">
+<!-- BOOKS -->
+<div id="books" class="section active">
+<h1 class="books-title">BOOKS</h1>
+
+<div class="books-list">
+
+<article class="book-row">
+  <div class="book-cover-box">
+    <img class="book-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+  </div>
+  <div class="book-info">
+    <p class="book-year">2026</p>
+    <h2>Chiudi la porta prima di andare via<br>Il futuro era ieri</h2>
+    <p class="book-meta">Edizioni Underground</p>
+    <p class="book-description">Una raccolta fatta di intimità e perdita, crollo emotivo e liberazione da ogni forma di dipendenza. Un invito a fare piano quando si entra o si esce dalle vite degli altri.</p>
+    <div class="book-actions">
+      <button class="book-button" type="button" onclick="openBook('chiudi')">READ</button>
+      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+    </div>
+  </div>
+</article>
+
+<article class="book-row">
+  <div class="book-cover-box">
+    <img class="book-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+  </div>
+  <div class="book-info">
+    <p class="book-year">2021</p>
+    <h2>Esserci a fatica</h2>
+    <p class="book-meta">Poesie di Livio Spanò, Polaroid di Enza Amato<br>Edizioni Underground</p>
+    <p class="book-description">Un dialogo tra poesia e Polaroid, costruito come attraversamento della memoria, della casa, del corpo e dell’assenza.</p>
+    <div class="book-actions">
+      <button class="book-button" type="button" onclick="openBook('esserci')">READ</button>
+      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+    </div>
+  </div>
+</article>
+
+<article class="book-row">
+  <div class="book-cover-box">
+    <img class="book-cover" src="images/books/covers/vita.jpg" alt="La vita accade" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+  </div>
+  <div class="book-info">
+    <p class="book-year">2016</p>
+    <h2>La vita accade</h2>
+    <p class="book-meta">Edizioni Amande</p>
+    <p class="book-description">Il primo libro, oggi non più disponibile. Una raccolta che attraversa appartenenza, esclusione, memoria e necessità di esistere attraverso la parola.</p>
+    <div class="book-actions">
+      <button class="book-button" type="button" onclick="openBook('vita')">READ</button>
+    </div>
+  </div>
+</article>
+
+</div>
+</div>
+
+
+
+</div>
+<!-- BOOK READER TEMPLATES -->
+<div id="book-templates" style="display:none;">
+
+<template id="book-reader-vita">
+<div class="book-reader" onclick="event.stopPropagation()">
+  <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
+  <div class="book-reader-header">
+    <img class="book-reader-cover" src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="lazy">
+    <h2>La vita accade</h2>
+    <p class="book-reader-meta">Edizioni Amande</p>
+  </div>
+
+  <h3>Presentazione</h3>
+  <p class="book-reader-meta">di Paolo Schiera</p>
+  <p>Un senso di appartenenza ci pervade, un deja vu dei nostri più intimi pensieri.</p>
+  <p>Le riflessioni ci vengono sussurrate all’orecchio ed evocano mondi da noi già conosciuti ma così stretti al cuore che difficilmente troveremmo le parole per descriverli.</p>
+  <p>Un senso di conforto ci pervade nel sapere che non siamo i soli.</p>
+  <p>Forse l’uomo si sente sempre un po’ diverso dagli altri, un’eccezione nella sua capacità di soffrire: poi un giorno qualcuno narra le nostre sofferenze, i nostri desideri e le nostre immaginazioni come fossero universali.</p>
+  <p>Un libro che narra e che comprende l’intimo di ognuno di noi.</p>
+
+  <div class="book-separator"></div>
+
+  <h4>AMO PER DISTRAZIONE</h4>
+  <div class="poem">Amo per distrazione
+per necessità
+per irresponsabilità
+sono ingiusto e scansato
+intuitivo ed estroverso.
+In me è nata l’invertebrata consapevolezza che
+le cose che ho sempre desiderato
+non sono mai realmente state utili
+tipo la gloria di un accapo azzeccato
+i sogni che gracchiano alla finestra
+le molotov nel giardino.
+Sempre sorso dopo sorso 
+ho realizzato di non voler essere 
+una marchiata presenza nei giorni della memoria
+però ricordo con gonfia coscienza
+i profumi dell’olio steso sul timido 
+cotone trattato.
+Non ho mai esasperato le mie emozioni
+sono rimasto sempre attivo
+nell’escludermi da questo sottopassaggio
+di lustri sentimentalismi
+con il decoro sociale ci ho sempre
+avuto poco a che fare
+in quei casi ho preferito alzare gli occhi al cielo
+solo per sgranchire il peso di questo 
+pensante tondo vuoto.
+Sono troppo piccolo e misero per comprendere
+l’infinità di questo tetto universale.</div>
+</div>
+</template>
+
+<template id="book-reader-esserci">
+<div class="book-reader" onclick="event.stopPropagation()">
+  <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
+  <div class="book-reader-header">
+    <img class="book-reader-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="lazy">
+    <h2>Esserci a fatica</h2>
+    <p class="book-reader-meta">Poesie di Livio Spanò<br>Polaroid di Enza Amato<br>Edizioni Underground</p>
+  </div>
+
+  <h3>VIA ROMILLI</h3>
+  <div class="poem">Ora che il silenzio ha ripreso finalmente ad avere il mio nome, 
+la cucina sembra indossare un aspetto nuovo, il divano delle forme
+più tristi, il bagno riepiloga lo sporco di chi trova
+nell’ansia un po’ di vita. 
+Il pavimento auspica  la sua giusta dose di polvere 
+che brilla nel cerchio verde che fotografa dettagli e volti. 
+Opero ristrettezze in piena solitudine,
+la fragranza di questo freddo sembra non farmi 
+mai invecchiare, la paura del cielo fuori da questa piccola
+finestra sul soffitto sembra più immensa, e il suo nero
+sempre più fraterno. 
+Scanso i cappotti appesi all’entrata, soprattutto quello 
+che sembra vomitato. 
+Scanso il portaombrelli  e mi rifugio in un angolo scelto 
+mentre lo spazio silenzioso mi culla. 
+Finestre su finestre, balconi arredati in grande stile
+e altri vuoti. 
+Persiane tende box-caldaia e fiori di plastica 
+si fondono col  sudicio artificiale. 
+Germoglia lentamente e in maniera lontana 
+il profumo del mare nei miei ricordi.
+L’incertezza se ho chiuso bene la porta
+fa del mio cervello, 
+una gigantesca macchia.</div>
+
+  <div class="book-separator"></div>
+
+  <h3>Polaroid</h3>
+  
+
+  <div class="polaroid-gallery">
+  <figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-01.jpg" alt="Polaroid 01" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-02.jpg" alt="Polaroid 02" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-03.jpg" alt="Polaroid 03" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-04.jpg" alt="Polaroid 04" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-05.jpg" alt="Polaroid 05" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-06.jpg" alt="Polaroid 06" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-07.jpg" alt="Polaroid 07" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-08.jpg" alt="Polaroid 08" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-09.jpg" alt="Polaroid 09" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-10.jpg" alt="Polaroid 10" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-11.jpg" alt="Polaroid 11" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-12.jpg" alt="Polaroid 12" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-13.jpg" alt="Polaroid 13" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-14.jpg" alt="Polaroid 14" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-15.jpg" alt="Polaroid 15" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-16.jpg" alt="Polaroid 16" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-17.jpg" alt="Polaroid 17" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-18.jpg" alt="Polaroid 18" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-19.jpg" alt="Polaroid 19" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-20.jpg" alt="Polaroid 20" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-21.jpg" alt="Polaroid 21" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-22.jpg" alt="Polaroid 22" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-23.jpg" alt="Polaroid 23" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-24.jpg" alt="Polaroid 24" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-25.jpg" alt="Polaroid 25" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-26.jpg" alt="Polaroid 26" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-27.jpg" alt="Polaroid 27" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-28.jpg" alt="Polaroid 28" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+<figure class="polaroid-frame">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-29.jpg" alt="Polaroid 29" decoding="async" loading="lazy">
+  <figcaption>Polaroid © Enza Amato</figcaption>
+</figure>
+  </div>
+
+  <div class="book-reader-actions">
+    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+  </div>
+</div>
+</template>
+
+<template id="book-reader-chiudi">
+<div class="book-reader" onclick="event.stopPropagation()">
+  <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
+  <div class="book-reader-header">
+    <img class="book-reader-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
+    <h2>Chiudi la porta prima di andare via<br>Il futuro era ieri</h2>
+    <p class="book-reader-meta">Edizioni Underground</p>
+  </div>
+
+  <h3>Prefazione</h3>
+  <p class="book-reader-meta">di Laura Belletrutti</p>
+  <p>Le poesie di questo libro sono come pagine strappate da un diario dell’anima. Livio Spanò scrive con sincerità, senza nascondere emozioni o debolezze. I suoi versi parlano di solitudine, dolore, rabbia, ma anche di speranza, amore e desiderio di cambiamento.</p>
+  <p>Chiudi la porta prima di andare via – Il futuro era ieri è un viaggio dentro sé stessi, tra ciò che ci ha ferito e ciò che ancora ci spinge a resistere. Le parole di Livio ci mostrano la realtà senza filtri: a volte dura, altre volte dolce. È un modo per affrontare i fantasmi del passato e provare a ricominciare, con fatica ma anche con coraggio.</p>
+  <p>In queste poesie c’è la voce di chi ha vissuto davvero, di chi ha perso e ha avuto paura, ma non ha mai smesso di cercare la propria verità. È un grido contro l’ipocrisia e le maschere, e al tempo stesso una carezza per chi si sente smarrito.</p>
+  <p>Ogni pagina invita a fermarsi, ascoltare, riflettere. A guardare dentro, anche quando fa male. Perché solo attraversando il buio si può trovare una nuova luce.</p>
+  <p class="note">(La Professoressa Laura Belletrutti è stata la mia insegnante nel periodo che va dal 1998 al 2001 a Madonna Dell’Olmo, Cuneo.)</p>
+
+  <div class="book-separator"></div>
+
+  <h4>SONO RITORNATO IN QUEL LUOGO CHE TI SOMIGLIA TANTO (PT1)</h4>
+  <p class="book-reader-meta">Bristol, 23/05/2024</p>
+  <div class="poem">Quel giorno avrei voluto tenere in mano il tuo dolore,
+proteggerti dall’angoscia di essere ancora parte della tua vita, 
+darti un cenno per dire: guardami, 
+sono qui a sostenere ogni tua sofferenza. 
+
+Abbiamo deciso di perdere insieme, 
+nelle notti umide di Via Segantini, 
+nei silenzi in cucina, 
+nel vuoto in camera da letto, 
+nei tuoi pianti mai realizzati in bagno. 
+
+Se guardo il giorno 
+in cui oltrepassasti quella porta, 
+mi rendo conto che l’unico che ha perso 
+in tutta questa storia, 
+sono stato io come uomo. 
+
+Ma se potessi porterei altre cento volte
+il tuo viso sul mio petto per dirti: va tutto bene!
+E piangerei per noi due 
+così che tu possa dormire un altro po’
+prima che il rumore delle automobili
+disturbi il tuo sonno. 
+
+Ho capito che eri lontana 
+quando ho visto le spalle e si sono chiuse le porte
+davanti a me, dietro di te. 
+Tra di noi. 
+Ho preso un caffè, aspettato il bus, 
+ho forzato il pianto lungo il tragitto. 
+Non avevo più niente da offrire.</div>
+
+  <div class="book-separator"></div>
+
+  <h4>SONO RITORNATO IN QUEL LUOGO CHE TI SOMIGLIA TANTO (PT2)</h4>
+  <p class="book-reader-meta">Brighton, UK, 28/05/2024</p>
+  <div class="poem">Sono tornato in quel luogo che ti somiglia tanto
+e ti ho intravista ballare uno swing malinconico
+al The Paris House. 
+Un vecchio local pub parigino 
+dove ci si perde a testa bassa 
+con fegato aperto all’ignoto.  
+Dove ti ho persa con disinvoltura. 
+Dove eri bellissima.
+
+Mentre cercavo un caffè, ti ho vista passeggiare
+lungo il molo Palace Pier; lentamente, appena percettibile 
+un vento fresco si alzava sfiorandoti con pace
+il sole non graziava più le tue guance
+con il tuo solito sguardo, di chi si sa ancora sorprendere,
+sorridevi (senza motivo) spalancando gli occhi verso 
+il tuo ultimo orizzonte.
+
+Volteggiavi come se mi stessi cercando. 
+Come se sapessi che ero lì, a un passo da te. 
+Come se io non fossi mai stato lì. 
+Come se io non fossi mai stato. 
+
+Eri sola, ed eri in pace nel crepuscolo.</div>
+
+  <div class="book-separator"></div>
+
+  <h3>Nota dell’autore</h3>
+  <p class="book-reader-meta">Livio Spanò</p>
+  <p>Chiudi la porta prima di andare via- Il futuro era ieri è un invito a fare piano quando si entra o si esce dalle vite degli altri.</p>
+  <p>È una raccolta fatta di intimità e perdita, crollo emotivo e liberazione da ogni forma di dipendenza.</p>
+  <p>È un inno alla vita, la nostra vita. In qualunque forma voi la pensiate,<br>siate sobri nelle gioie e nei dolori, nel perdervi e nel ritrovarvi.</p>
+  <p>Ma soprattutto, siate seri.</p>
+  <p>Livio Spanò</p>
+
+  <div class="book-reader-actions">
+    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+  </div>
+</div>
+</template>
+
+</div>
+
+
+<!-- POLAROID VIEWER -->
+<div id="polaroid-viewer" onclick="closePolaroid()">
+  <button class="polaroid-viewer-close" type="button" onclick="event.stopPropagation(); closePolaroid()">CLOSE</button>
+  <img id="polaroid-viewer-img" alt="Polaroid enlarged">
+</div>
+
+
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeImg()">
+<img id="overlay-img">
+<div id="overlay-text"></div>
+</div>
+
+
+<!-- FOOTER FISSO -->
+<div class="global-footer">
+Powered by INEBRIUS
+</div>
+
+
+<script>
+function getMobileNavElements(){
+  return {
+    toggle: document.getElementById("mobile-nav-toggle"),
+    menu: document.getElementById("mobile-nav-menu")
+  };
+}
+
+function setMobileMenuOpen(isOpen){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu) return;
+
+  nav.toggle.setAttribute("aria-expanded", String(isOpen));
+  nav.menu.hidden = !isOpen;
+  nav.menu.classList.toggle("is-open", isOpen);
+}
+
+function closeMobileMenu(){
+  setMobileMenuOpen(false);
+}
+
+function toggleMobileMenu(){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu) return;
+
+  setMobileMenuOpen(nav.toggle.getAttribute("aria-expanded") !== "true");
+}
+
+document.addEventListener("click", function(event){
+  const nav = getMobileNavElements();
+  if (!nav.toggle || !nav.menu || nav.menu.hidden) return;
+  if (nav.toggle.contains(event.target) || nav.menu.contains(event.target)) return;
+
+  closeMobileMenu();
+});
+
+document.addEventListener("keydown", function(event){
+  if (event.key === "Escape") {
+    closeMobileMenu();
+  }
+});
+
+window.addEventListener("resize", function(){
+  if (window.innerWidth > 768) {
+    closeMobileMenu();
+  }
+});
+</script>
+<script>
+function openPolaroid(img){
+  const viewer = document.getElementById("polaroid-viewer");
+  const viewerImg = document.getElementById("polaroid-viewer-img");
+
+  viewerImg.src = img.currentSrc || img.src;
+  viewer.style.display = "flex";
+}
+
+function closePolaroid(){
+  const viewer = document.getElementById("polaroid-viewer");
+  const viewerImg = document.getElementById("polaroid-viewer-img");
+
+  viewer.style.display = "none";
+  viewerImg.src = "";
+}
+
+function openBook(book){
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+  const text = document.getElementById("overlay-text");
+  const template = document.getElementById("book-reader-" + book);
+
+  overlay.classList.add("book-mode");
+  overlay.style.display = "flex";
+  overlayImg.style.display = "none";
+  overlayImg.src = "";
+
+  text.innerHTML = template ? template.innerHTML : "";
+}
+
+function closeImg(){
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+  const text = document.getElementById("overlay-text");
+
+  overlay.style.display = "none";
+  overlay.classList.remove("book-mode");
+  overlayImg.style.display = "";
+  overlayImg.src = "";
+  text.innerHTML = "";
+}
+</script>
+<!-- PRIVATE VISITOR COUNTER -->
+<script data-goatcounter="https://livio.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
+
+<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener">VISITS</a>
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("admin") === "livio") {
+    const link = document.getElementById("private-admin-link");
+    if (link) link.style.display = "block";
+  }
+})();
+</script>
+
+
+
+<script>
+(function(){
+  function isProtectedImage(target) {
+    return target && target.tagName && target.tagName.toLowerCase() === "img";
+  }
+
+  document.addEventListener("contextmenu", function(event) {
+    if (isProtectedImage(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("dragstart", function(event) {
+    if (isProtectedImage(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("mousedown", function(event) {
+    if (isProtectedImage(event.target) && event.button === 2) {
+      event.preventDefault();
+    }
+  });
+
+  document.querySelectorAll("img").forEach(function(img){
+    img.setAttribute("draggable", "false");
+    img.setAttribute("oncontextmenu", "return false");
+  });
+})();
+</script>
+
+
+</body>
+</html>

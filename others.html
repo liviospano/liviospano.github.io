@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Livio Spanò, Books and Photography</title>
+<title>THE OTHERS AND I | Livio Spanò, Books and Photography</title>
 <meta name="description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
-<link rel="canonical" href="https://www.liviospano.com/">
+<link rel="canonical" href="https://www.liviospano.com/others.html">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Livio Spanò, Books and Photography">
+<meta property="og:title" content="THE OTHERS AND I | Livio Spanò, Books and Photography">
 <meta property="og:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
-<meta property="og:url" content="https://www.liviospano.com/">
+<meta property="og:url" content="https://www.liviospano.com/others.html">
 <meta property="og:image" content="https://www.liviospano.com/social-preview.jpg">
 <meta property="og:image:secure_url" content="https://www.liviospano.com/social-preview.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Livio Spanò">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Livio Spanò, Books and Photography">
+<meta name="twitter:title" content="THE OTHERS AND I | Livio Spanò, Books and Photography">
 <meta name="twitter:description" content="Official portfolio of Livio Spanò, photography, books, visual projects and artistic research.">
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
@@ -984,17 +984,35 @@ img {
   <a href="contact.html">CONTACT</a>
 </div>
 </nav>
-<!-- INTRO -->
-<div id="intro">
-  <div class="intro-content">
-    <img src="firma.png" class="signature" alt="Livio Spanò" loading="eager" decoding="async" fetchpriority="high" draggable="false" oncontextmenu="return false">
-    <p class="signature-subtitle">"I've no use for bodies. It's silent immobility that interests me"</p>
-  </div>
+<div class="main-content" style="display:block; opacity:1;">
+<!-- OTHERS -->
+<div id="others" class="section active">
+<h1 style="text-align:center;">THE OTHERS AND I</h1>
+
+<div class="grid">
+<div class="item"><img  src="1.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Mother, does this world deserve me?</div></div>
+<div class="item"><img  src="2.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Turbo Island in my mind</div></div>
+<div class="item"><img  src="3.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Is there really an age for being happy?</div></div>
+<div class="item"><img  src="4.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Wrapped in urban decay</div></div>
+<div class="item"><img  src="5.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Two distances, same street</div></div>
+<div class="item"><img  src="6.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">A piece of childhood has remained before me.</div></div>
+<div class="item"><img  src="7.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">Help me look for a trace of civilisation</div></div>
+<div class="item"><img  src="8.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">UNMASKED</div></div>
+<div class="item"><img  src="9.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#9</div></div>
+<div class="item"><img  src="10.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#10</div></div>
+<div class="item"><img  src="11.jpg" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">At the Barbican in London, even loneliness feels designed.</div></div>
+</div>
 </div>
 
 
-<!-- CONTENUTO -->
-<div class="main-content"></div>
+</div>
+<!-- OVERLAY -->
+<div id="overlay" onclick="closeImg()">
+<img id="overlay-img">
+<div id="overlay-text"></div>
+</div>
+
+
 <!-- FOOTER FISSO -->
 <div class="global-footer">
 Powered by INEBRIUS
@@ -1050,19 +1068,38 @@ window.addEventListener("resize", function(){
 });
 </script>
 <script>
-function showMainContentImmediately(){
-  document.getElementById("intro").style.display = "none";
+function openImg(img){
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+  const text = document.getElementById("overlay-text");
 
-  const content = document.querySelector(".main-content");
-  content.style.display = "block";
-  content.style.opacity = "1";
+  overlay.style.display = "flex";
+  overlayImg.src = img.currentSrc || img.src;
+
+  const file = img.src.split("/").pop();
+
+  if(file === "9.jpg"){
+    text.innerHTML = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
+  }
+  else if(file === "10.jpg"){
+    text.innerHTML = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
+  }
+  else{
+    text.innerHTML = "";
+  }
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-  setTimeout(function(){
-    showMainContentImmediately();
-  }, 3800);
-});
+function closeImg(){
+  const overlay = document.getElementById("overlay");
+  const overlayImg = document.getElementById("overlay-img");
+  const text = document.getElementById("overlay-text");
+
+  overlay.style.display = "none";
+  overlay.classList.remove("book-mode");
+  overlayImg.style.display = "";
+  overlayImg.src = "";
+  text.innerHTML = "";
+}
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
