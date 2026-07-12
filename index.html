@@ -611,9 +611,21 @@ nav a:hover { opacity:1; }
 
 /* ENGLISH POETRY */
 .english-poetry-shell {
-  max-width:680px;
+  max-width:1000px;
   margin:60px auto 140px auto;
-  padding:0 40px;
+  padding:0 24px;
+}
+
+.english-poetry-layout {
+  display:grid;
+  grid-template-columns:minmax(0, 680px) minmax(180px, 220px);
+  gap:36px;
+  align-items:start;
+  justify-content:center;
+}
+
+.english-poetry-content {
+  width:100%;
 }
 
 .english-poetry-header {
@@ -636,6 +648,7 @@ nav a:hover { opacity:1; }
   margin:0 0 112px 0;
   padding:0 0 108px 0;
   border-bottom:1px solid rgba(255,255,255,0.14);
+  scroll-margin-top:84px;
 }
 
 .poem-entry:last-child {
@@ -668,6 +681,83 @@ nav a:hover { opacity:1; }
   font-size:16px;
   line-height:1.72;
   opacity:0.86;
+}
+
+/* POEM ARCHIVE */
+.poetry-archive {
+  width:100%;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(0,0,0,0.32);
+}
+
+.poetry-archive-toggle {
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border:0;
+  background:transparent;
+  color:white;
+  padding:14px 14px;
+  font-family:Arial;
+  font-size:10px;
+  letter-spacing:2px;
+  text-align:left;
+  cursor:pointer;
+}
+
+.poetry-archive-toggle:focus-visible,
+.poetry-archive-list a:focus-visible {
+  outline:1px solid white;
+  outline-offset:3px;
+}
+
+.poetry-archive-indicator {
+  flex:0 0 auto;
+  font-size:14px;
+  line-height:1;
+  opacity:0.72;
+}
+
+.poetry-archive-list {
+  border-top:1px solid rgba(255,255,255,0.12);
+  padding:8px 0;
+}
+
+.poetry-archive-list[hidden] {
+  display:none;
+}
+
+.poetry-archive-list a {
+  display:block;
+  color:white;
+  padding:10px 14px;
+  font-size:11px;
+  line-height:1.45;
+  letter-spacing:1px;
+  text-decoration:none;
+  opacity:0.72;
+}
+
+.poetry-archive-list a:hover {
+  opacity:1;
+}
+
+@media (max-width:900px) {
+  .english-poetry-layout {
+    display:flex;
+    flex-direction:column;
+    gap:46px;
+  }
+
+  .english-poetry-content {
+    order:2;
+  }
+
+  .poetry-archive {
+    order:1;
+  }
 }
 
 @media (max-width:760px) {
@@ -1007,6 +1097,8 @@ img {
 <div id="english-poetry" class="section">
 
 <div class="english-poetry-shell">
+<div class="english-poetry-layout">
+<div class="english-poetry-content">
 <div class="english-poetry-list">
 <article class="poem-entry">
 <h2 class="poem-title">BROKEN SHINE</h2>
@@ -1138,6 +1230,14 @@ your eyes are blind,
 your mind completely empty.</div>
 </article>
 </div>
+</div>
+<aside id="english-poetry-archive" class="poetry-archive" aria-label="Poem archive">
+<button id="english-poetry-archive-toggle" class="poetry-archive-toggle" type="button" aria-expanded="false" aria-controls="english-poetry-archive-list">
+<span>POEM ARCHIVE</span>
+<span class="poetry-archive-indicator" aria-hidden="true">+</span>
+</button>
+<div id="english-poetry-archive-list" class="poetry-archive-list" aria-label="Poem archive links" hidden></div>
+</aside>
 </div>
 
 </div>
@@ -1600,6 +1700,97 @@ function selectMobileSection(id){
   closeMobileMenu();
 }
 
+function getPoemArchiveElements(){
+  return {
+    section: document.getElementById("english-poetry"),
+    button: document.getElementById("english-poetry-archive-toggle"),
+    list: document.getElementById("english-poetry-archive-list"),
+    indicator: document.querySelector("#english-poetry-archive-toggle .poetry-archive-indicator")
+  };
+}
+
+function slugifyPoemTitle(title){
+  const slug = title
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+  return slug ? "poem-" + slug : "poem";
+}
+
+function getUniquePoemId(baseId, usedIds, entry){
+  let id = baseId;
+  let count = 2;
+
+  while (usedIds.has(id) || (document.getElementById(id) && document.getElementById(id) !== entry)) {
+    id = baseId + "-" + count;
+    count += 1;
+  }
+
+  usedIds.add(id);
+  return id;
+}
+
+function setPoetryArchiveOpen(isOpen){
+  const archive = getPoemArchiveElements();
+  if (!archive.button || !archive.list) return;
+
+  archive.button.setAttribute("aria-expanded", String(isOpen));
+  archive.list.hidden = !isOpen;
+
+  if (archive.indicator) {
+    archive.indicator.textContent = isOpen ? "-" : "+";
+  }
+}
+
+function initializeEnglishPoetryArchive(){
+  const archive = getPoemArchiveElements();
+  if (!archive.section || !archive.button || !archive.list) return;
+
+  const entries = Array.from(archive.section.querySelectorAll(".poem-entry"));
+  const usedIds = new Set();
+
+  archive.list.innerHTML = "";
+
+  entries.forEach(function(entry){
+    const title = entry.querySelector(".poem-title");
+    const titleText = title ? title.textContent.trim() : "";
+    if (!titleText) return;
+
+    const existingId = entry.id && !usedIds.has(entry.id) ? entry.id : "";
+    entry.id = existingId || getUniquePoemId(slugifyPoemTitle(titleText), usedIds, entry);
+    if (existingId) usedIds.add(existingId);
+
+    const link = document.createElement("a");
+    link.href = "#" + entry.id;
+    link.textContent = titleText;
+    link.addEventListener("click", function(event){
+      event.preventDefault();
+      showSection("english-poetry");
+
+      if (window.matchMedia("(max-width: 900px)").matches) {
+        setPoetryArchiveOpen(false);
+      }
+
+      requestAnimationFrame(function(){
+        entry.scrollIntoView({ behavior:"smooth", block:"start" });
+      });
+    });
+
+    archive.list.appendChild(link);
+  });
+
+  archive.button.onclick = function(){
+    setPoetryArchiveOpen(archive.button.getAttribute("aria-expanded") !== "true");
+  };
+
+  setPoetryArchiveOpen(false);
+}
+
 function showMainContentImmediately(){
   document.getElementById("intro").style.display = "none";
 
@@ -1612,6 +1803,7 @@ function showMainContentImmediately(){
 
 document.addEventListener("DOMContentLoaded", function(){
   restoreSection();
+  initializeEnglishPoetryArchive();
 
   setTimeout(function(){
     showMainContentImmediately();
