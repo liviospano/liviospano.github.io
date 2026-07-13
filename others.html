@@ -212,20 +212,11 @@ nav a:hover { opacity:1; }
 
 #overlay img {
   max-width:94vw;
-  max-height:calc(100dvh - 94px);
+  max-height:88dvh;
   width:auto;
   height:auto;
   object-fit:contain;
   display:block;
-  opacity:0;
-  transition:opacity 0.35s ease;
-}
-
-#overlay.has-text img {
-  max-height:calc(100dvh - 210px);
-}
-
-#overlay img.is-loaded {
   opacity:1;
 }
 
@@ -255,20 +246,8 @@ nav a:hover { opacity:1; }
   color:black;
 }
 
-#overlay::before {
-  content:"LOADING";
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  font-size:10px;
-  letter-spacing:3px;
-  opacity:0.42;
-}
-
-#overlay.image-ready::before,
-#overlay.book-mode::before {
-  display:none;
+#overlay.has-text img {
+  max-height:72dvh;
 }
 
 /* PAGINE TESTO */
@@ -940,11 +919,11 @@ nav a:hover { opacity:1; }
 
   #overlay img {
     max-width:96vw;
-    max-height:calc(100dvh - 92px);
+    max-height:84dvh;
   }
 
   #overlay.has-text img {
-    max-height:calc(100dvh - 230px);
+    max-height:64dvh;
   }
 
   #overlay-text {
@@ -1075,8 +1054,8 @@ img {
 <!-- OVERLAY -->
 <div id="overlay" onclick="closeImg()">
 <button class="overlay-close" type="button" onclick="event.stopPropagation(); closeImg()">CLOSE</button>
-<img id="overlay-img">
-<div id="overlay-text"></div>
+<img id="overlay-img" onclick="event.stopPropagation()">
+<div id="overlay-text" onclick="event.stopPropagation()"></div>
 </div>
 
 
@@ -1150,24 +1129,12 @@ function openImg(img){
     captionText = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
   }
 
-  overlay.classList.remove("book-mode", "image-ready", "has-text");
+  overlay.classList.remove("book-mode", "has-text");
   overlay.classList.toggle("has-text", Boolean(captionText));
-  overlayImg.classList.remove("is-loaded");
   text.innerHTML = captionText;
   overlay.style.display = "flex";
   document.body.style.overflow = "hidden";
-
-  overlayImg.onload = function(){
-    overlay.classList.add("image-ready");
-    overlayImg.classList.add("is-loaded");
-  };
-
   overlayImg.src = imageSrc;
-
-  if (overlayImg.complete && overlayImg.naturalWidth > 0) {
-    overlay.classList.add("image-ready");
-    overlayImg.classList.add("is-loaded");
-  }
 }
 
 function closeImg(){
@@ -1176,31 +1143,12 @@ function closeImg(){
   const text = document.getElementById("overlay-text");
 
   overlay.style.display = "none";
-  overlay.classList.remove("book-mode", "image-ready", "has-text");
+  overlay.classList.remove("book-mode", "has-text");
   overlayImg.style.display = "";
-  overlayImg.onload = null;
-  overlayImg.classList.remove("is-loaded");
   overlayImg.src = "";
   text.innerHTML = "";
   document.body.style.overflow = "";
 }
-
-function preloadGalleryImages(){
-  const load = function(){
-    document.querySelectorAll("#others img").forEach(function(img){
-      const preload = new Image();
-      preload.src = img.currentSrc || img.src;
-    });
-  };
-
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(load, { timeout: 2500 });
-  } else {
-    setTimeout(load, 1200);
-  }
-}
-
-window.addEventListener("load", preloadGalleryImages);
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
