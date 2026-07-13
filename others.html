@@ -206,19 +206,23 @@ nav a:hover { opacity:1; }
   align-items:center;
   flex-direction:column;
   z-index:9999;
-  padding:28px;
+  padding:54px 24px 30px;
   box-sizing:border-box;
 }
 
 #overlay img {
-  max-width:96vw;
-  max-height:86vh;
+  max-width:94vw;
+  max-height:calc(100dvh - 94px);
   width:auto;
   height:auto;
   object-fit:contain;
   display:block;
   opacity:0;
   transition:opacity 0.35s ease;
+}
+
+#overlay.has-text img {
+  max-height:calc(100dvh - 210px);
 }
 
 #overlay img.is-loaded {
@@ -230,6 +234,25 @@ nav a:hover { opacity:1; }
   max-width:min(680px, 92vw);
   text-align:center;
   line-height:1.55;
+}
+
+.overlay-close {
+  position:fixed;
+  top:18px;
+  right:20px;
+  border:1px solid rgba(255,255,255,0.45);
+  background:rgba(0,0,0,0.76);
+  color:white;
+  padding:9px 12px;
+  font-size:10px;
+  letter-spacing:2px;
+  cursor:pointer;
+  z-index:10000;
+}
+
+.overlay-close:hover {
+  background:white;
+  color:black;
 }
 
 #overlay::before {
@@ -911,6 +934,23 @@ nav a:hover { opacity:1; }
 }
 
 @media (max-width:760px) {
+  #overlay {
+    padding:52px 12px 24px;
+  }
+
+  #overlay img {
+    max-width:96vw;
+    max-height:calc(100dvh - 92px);
+  }
+
+  #overlay.has-text img {
+    max-height:calc(100dvh - 230px);
+  }
+
+  #overlay-text {
+    font-size:13px;
+  }
+
   .book-row {
     grid-template-columns:1fr;
     gap:26px;
@@ -1034,6 +1074,7 @@ img {
 </div>
 <!-- OVERLAY -->
 <div id="overlay" onclick="closeImg()">
+<button class="overlay-close" type="button" onclick="event.stopPropagation(); closeImg()">CLOSE</button>
 <img id="overlay-img">
 <div id="overlay-text"></div>
 </div>
@@ -1098,26 +1139,34 @@ function openImg(img){
   const overlay = document.getElementById("overlay");
   const overlayImg = document.getElementById("overlay-img");
   const text = document.getElementById("overlay-text");
+  const imageSrc = img.currentSrc || img.src;
+  const file = img.src.split("/").pop();
+  let captionText = "";
 
-  overlay.classList.remove("book-mode", "image-ready");
-  overlay.style.display = "flex";
+  if(file === "9.jpg"){
+    captionText = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
+  }
+  else if(file === "10.jpg"){
+    captionText = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
+  }
+
+  overlay.classList.remove("book-mode", "image-ready", "has-text");
+  overlay.classList.toggle("has-text", Boolean(captionText));
   overlayImg.classList.remove("is-loaded");
+  text.innerHTML = captionText;
+  overlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
+
   overlayImg.onload = function(){
     overlay.classList.add("image-ready");
     overlayImg.classList.add("is-loaded");
   };
-  overlayImg.src = img.currentSrc || img.src;
 
-  const file = img.src.split("/").pop();
+  overlayImg.src = imageSrc;
 
-  if(file === "9.jpg"){
-    text.innerHTML = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
-  }
-  else if(file === "10.jpg"){
-    text.innerHTML = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
-  }
-  else{
-    text.innerHTML = "";
+  if (overlayImg.complete && overlayImg.naturalWidth > 0) {
+    overlay.classList.add("image-ready");
+    overlayImg.classList.add("is-loaded");
   }
 }
 
@@ -1127,13 +1176,31 @@ function closeImg(){
   const text = document.getElementById("overlay-text");
 
   overlay.style.display = "none";
-  overlay.classList.remove("book-mode", "image-ready");
+  overlay.classList.remove("book-mode", "image-ready", "has-text");
   overlayImg.style.display = "";
   overlayImg.onload = null;
   overlayImg.classList.remove("is-loaded");
   overlayImg.src = "";
   text.innerHTML = "";
+  document.body.style.overflow = "";
 }
+
+function preloadGalleryImages(){
+  const load = function(){
+    document.querySelectorAll("#others img").forEach(function(img){
+      const preload = new Image();
+      preload.src = img.currentSrc || img.src;
+    });
+  };
+
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(load, { timeout: 2500 });
+  } else {
+    setTimeout(load, 1200);
+  }
+}
+
+window.addEventListener("load", preloadGalleryImages);
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
