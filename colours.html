@@ -25,6 +25,8 @@
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
+<link rel="preload" as="image" href="c1.jpg">
+<link rel="preload" as="image" href="c2.jpg">
 
 <style>
 
@@ -199,27 +201,53 @@ nav a:hover { opacity:1; }
 /* OVERLAY */
 #overlay {
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   background:black;
   display:none;
   justify-content:center;
   align-items:center;
   flex-direction:column;
   z-index:9999;
+  padding:28px;
+  box-sizing:border-box;
 }
 
 #overlay img {
-  max-width:90vw;
-  max-height:70vh;
+  max-width:96vw;
+  max-height:86vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  opacity:0;
+  transition:opacity 0.35s ease;
+}
+
+#overlay img.is-loaded {
+  opacity:1;
 }
 
 #overlay-text {
-  margin-top:20px;
-  max-width:500px;
+  margin-top:16px;
+  max-width:min(680px, 92vw);
   text-align:center;
+  line-height:1.55;
+}
+
+#overlay::before {
+  content:"LOADING";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  font-size:10px;
+  letter-spacing:3px;
+  opacity:0.42;
+}
+
+#overlay.image-ready::before,
+#overlay.book-mode::before {
+  display:none;
 }
 
 /* PAGINE TESTO */
@@ -990,18 +1018,18 @@ img {
 <h1 style="text-align:center;">COLOURS EDITION</h1>
 
 <div class="grid">
-<div class="item"><img  src="c1.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#1</div></div>
-<div class="item"><img  src="c2.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#2</div></div>
-<div class="item"><img  src="c3.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#3</div></div>
-<div class="item"><img  src="c4.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#4</div></div>
-<div class="item"><img  src="c5.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
-<div class="item"><img  src="c6.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#6</div></div>
-<div class="item"><img  src="c7.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#7</div></div>
-<div class="item"><img  src="c8.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#8</div></div>
-<div class="item"><img  src="c9.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#9</div></div>
-<div class="item"><img  src="c10.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#10</div></div>
-<div class="item"><img  src="c11.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#11</div></div>
-<div class="item"><img  src="c12.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#12</div></div>
+<div class="item"><img src="c1.jpg" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#1</div></div>
+<div class="item"><img src="c2.jpg" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#2</div></div>
+<div class="item"><img src="c3.jpg" onclick="openImg(this)" decoding="async" loading="eager"><div class="caption">#3</div></div>
+<div class="item"><img src="c4.jpg" onclick="openImg(this)" decoding="async" loading="eager"><div class="caption">#4</div></div>
+<div class="item"><img src="c5.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
+<div class="item"><img src="c6.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#6</div></div>
+<div class="item"><img src="c7.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#7</div></div>
+<div class="item"><img src="c8.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#8</div></div>
+<div class="item"><img src="c9.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#9</div></div>
+<div class="item"><img src="c10.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#10</div></div>
+<div class="item"><img src="c11.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#11</div></div>
+<div class="item"><img src="c12.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#12</div></div>
 </div>
 </div>
 
@@ -1075,7 +1103,13 @@ function openImg(img){
   const overlayImg = document.getElementById("overlay-img");
   const text = document.getElementById("overlay-text");
 
+  overlay.classList.remove("book-mode", "image-ready");
   overlay.style.display = "flex";
+  overlayImg.classList.remove("is-loaded");
+  overlayImg.onload = function(){
+    overlay.classList.add("image-ready");
+    overlayImg.classList.add("is-loaded");
+  };
   overlayImg.src = img.currentSrc || img.src;
 
   const file = img.src.split("/").pop();
@@ -1097,8 +1131,10 @@ function closeImg(){
   const text = document.getElementById("overlay-text");
 
   overlay.style.display = "none";
-  overlay.classList.remove("book-mode");
+  overlay.classList.remove("book-mode", "image-ready");
   overlayImg.style.display = "";
+  overlayImg.onload = null;
+  overlayImg.classList.remove("is-loaded");
   overlayImg.src = "";
   text.innerHTML = "";
 }
