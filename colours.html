@@ -1012,8 +1012,8 @@ img {
 <h1 style="text-align:center;">COLOURS EDITION</h1>
 
 <div class="grid">
-<div class="item"><img  src="c1.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#1</div></div>
-<div class="item"><img  src="c2.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#2</div></div>
+<div class="item"><img  src="c1.webp" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#1</div></div>
+<div class="item"><img  src="c2.webp" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#2</div></div>
 <div class="item"><img  src="c3.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#3</div></div>
 <div class="item"><img  src="c4.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#4</div></div>
 <div class="item"><img  src="c5.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
@@ -1033,8 +1033,8 @@ img {
 </div>
 <!-- OVERLAY -->
 <div id="overlay" onclick="closeImg()">
-<img id="overlay-img">
-<div id="overlay-text"></div>
+<img id="overlay-img" onclick="event.stopPropagation()">
+<div id="overlay-text" onclick="event.stopPropagation()"></div>
 </div>
 
 
@@ -1099,13 +1099,20 @@ function openImg(img){
   const text = document.getElementById("overlay-text");
   const src = img.currentSrc || img.src;
 
-  overlay.style.display = "flex";
   overlayImg.style.opacity = "0";
   overlayImg.onload = function(){
+    overlay.style.display = "flex";
+    overlayImg.style.opacity = "1";
+  };
+  overlayImg.onerror = function(){
+    overlay.style.display = "none";
     overlayImg.style.opacity = "1";
   };
   overlayImg.src = src;
-  if (overlayImg.complete) overlayImg.style.opacity = "1";
+  if (overlayImg.complete && overlayImg.naturalWidth > 0) {
+    overlay.style.display = "flex";
+    overlayImg.style.opacity = "1";
+  }
 
   const file = src.split("/").pop().replace(/\.[^.]+$/, "");
 
@@ -1124,14 +1131,7 @@ function openImg(img){
 }
 
 function preloadGalleryImages(){
-  const seen = new Set();
-  document.querySelectorAll("#colours .item img").forEach(function(img){
-    const src = img.getAttribute("src");
-    if (!src || seen.has(src)) return;
-    seen.add(src);
-    const preload = new Image();
-    preload.src = src;
-  });
+  return;
 }
 
 document.addEventListener("DOMContentLoaded", preloadGalleryImages);
@@ -1143,6 +1143,8 @@ function closeImg(){
 
   overlay.style.display = "none";
   overlay.classList.remove("book-mode");
+  overlayImg.onload = null;
+  overlayImg.onerror = null;
   overlayImg.style.display = "";
   overlayImg.style.opacity = "1";
   overlayImg.src = "";
