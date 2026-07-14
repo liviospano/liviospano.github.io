@@ -25,8 +25,6 @@
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
-<link rel="preload" as="image" href="c1.jpg">
-<link rel="preload" as="image" href="c2.jpg">
 
 <style>
 
@@ -201,55 +199,29 @@ nav a:hover { opacity:1; }
 /* OVERLAY */
 #overlay {
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
   background:black;
   display:none;
   justify-content:center;
   align-items:center;
   flex-direction:column;
   z-index:9999;
-  padding:54px 24px 30px;
-  box-sizing:border-box;
 }
 
 #overlay img {
-  max-width:94vw;
-  max-height:88dvh;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  display:block;
+  max-width:90vw;
+  max-height:70vh;
   opacity:1;
+  transition:opacity 0.18s ease;
 }
 
 #overlay-text {
-  margin-top:16px;
-  max-width:min(680px, 92vw);
+  margin-top:20px;
+  max-width:500px;
   text-align:center;
-  line-height:1.55;
-}
-
-.overlay-close {
-  position:fixed;
-  top:18px;
-  right:20px;
-  border:1px solid rgba(255,255,255,0.45);
-  background:rgba(0,0,0,0.76);
-  color:white;
-  padding:9px 12px;
-  font-size:10px;
-  letter-spacing:2px;
-  cursor:pointer;
-  z-index:10000;
-}
-
-.overlay-close:hover {
-  background:white;
-  color:black;
-}
-
-#overlay.has-text img {
-  max-height:72dvh;
 }
 
 /* PAGINE TESTO */
@@ -915,23 +887,6 @@ nav a:hover { opacity:1; }
 }
 
 @media (max-width:760px) {
-  #overlay {
-    padding:52px 12px 24px;
-  }
-
-  #overlay img {
-    max-width:96vw;
-    max-height:84dvh;
-  }
-
-  #overlay.has-text img {
-    max-height:64dvh;
-  }
-
-  #overlay-text {
-    font-size:13px;
-  }
-
   .book-row {
     grid-template-columns:1fr;
     gap:26px;
@@ -1037,18 +992,19 @@ img {
 <h1 style="text-align:center;">COLOURS EDITION</h1>
 
 <div class="grid">
-<div class="item"><img src="c1.jpg" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#1</div></div>
-<div class="item"><img src="c2.jpg" onclick="openImg(this)" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#2</div></div>
-<div class="item"><img src="c3.jpg" onclick="openImg(this)" decoding="async" loading="eager"><div class="caption">#3</div></div>
-<div class="item"><img src="c4.jpg" onclick="openImg(this)" decoding="async" loading="eager"><div class="caption">#4</div></div>
-<div class="item"><img src="c5.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
-<div class="item"><img src="c6.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#6</div></div>
-<div class="item"><img src="c7.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#7</div></div>
-<div class="item"><img src="c8.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#8</div></div>
-<div class="item"><img src="c9.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#9</div></div>
-<div class="item"><img src="c10.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#10</div></div>
-<div class="item"><img src="c11.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#11</div></div>
-<div class="item"><img src="c12.jpg" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#12</div></div>
+<div class="item"><img  src="c1.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#1</div></div>
+<div class="item"><img  src="c2.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#2</div></div>
+<div class="item"><img  src="c3.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#3</div></div>
+<div class="item"><img  src="c4.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#4</div></div>
+<div class="item"><img  src="c5.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#5</div></div>
+<div class="item"><img  src="c6.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#6</div></div>
+<div class="item"><img  src="c7.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#7</div></div>
+<div class="item"><img  src="c8.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#8</div></div>
+<div class="item"><img  src="c9.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#9</div></div>
+<div class="item"><img  src="c10.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#10</div></div>
+<div class="item"><img  src="c11.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#11</div></div>
+<div class="item"><img  src="c12.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#12</div></div>
+<div class="item"><img  src="c13.webp" onclick="openImg(this)" decoding="async" loading="lazy"><div class="caption">#13</div></div>
 </div>
 </div>
 
@@ -1057,9 +1013,8 @@ img {
 </div>
 <!-- OVERLAY -->
 <div id="overlay" onclick="closeImg()">
-<button class="overlay-close" type="button" onclick="event.stopPropagation(); closeImg()">CLOSE</button>
-<img id="overlay-img" onclick="event.stopPropagation()">
-<div id="overlay-text" onclick="event.stopPropagation()"></div>
+<img id="overlay-img">
+<div id="overlay-text"></div>
 </div>
 
 
@@ -1122,24 +1077,44 @@ function openImg(img){
   const overlay = document.getElementById("overlay");
   const overlayImg = document.getElementById("overlay-img");
   const text = document.getElementById("overlay-text");
-  const imageSrc = img.currentSrc || img.src;
-  const file = img.src.split("/").pop();
-  let captionText = "";
+  const src = img.currentSrc || img.src;
 
-  if(file === "9.jpg"){
-    captionText = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
-  }
-  else if(file === "10.jpg"){
-    captionText = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
-  }
-
-  overlay.classList.remove("book-mode", "has-text");
-  overlay.classList.toggle("has-text", Boolean(captionText));
-  text.innerHTML = captionText;
   overlay.style.display = "flex";
-  document.body.style.overflow = "hidden";
-  overlayImg.src = imageSrc;
+  overlayImg.style.opacity = "0";
+  overlayImg.onload = function(){
+    overlayImg.style.opacity = "1";
+  };
+  overlayImg.src = src;
+  if (overlayImg.complete) overlayImg.style.opacity = "1";
+
+  const file = src.split("/").pop().replace(/\.[^.]+$/, "");
+
+  if(file === "9"){
+    text.innerHTML = `We sit next to each other, yet remain miles apart.<br><br>Skin brushes against skin and nothing happens.<br><br>Each of us carries our own silence.`;
+  }
+  else if(file === "10"){
+    text.innerHTML = `An empty bench can hurt more than a person who leaves.<br><br>One side carries weight, the other hides.`;
+  }
+  else if(file === "c13"){
+    text.innerHTML = `Not photographs. Human remains.`;
+  }
+  else{
+    text.innerHTML = "";
+  }
 }
+
+function preloadGalleryImages(){
+  const seen = new Set();
+  document.querySelectorAll("#colours .item img").forEach(function(img){
+    const src = img.getAttribute("src");
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    const preload = new Image();
+    preload.src = src;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", preloadGalleryImages);
 
 function closeImg(){
   const overlay = document.getElementById("overlay");
@@ -1147,11 +1122,11 @@ function closeImg(){
   const text = document.getElementById("overlay-text");
 
   overlay.style.display = "none";
-  overlay.classList.remove("book-mode", "has-text");
+  overlay.classList.remove("book-mode");
   overlayImg.style.display = "";
+  overlayImg.style.opacity = "1";
   overlayImg.src = "";
   text.innerHTML = "";
-  document.body.style.overflow = "";
 }
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
