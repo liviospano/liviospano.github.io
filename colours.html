@@ -25,6 +25,26 @@
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data: blob:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' file: https://gc.zgo.at; style-src 'self' 'unsafe-inline' file:; img-src 'self' file: data: blob: https:; connect-src 'self' file: https://livio.goatcounter.com https://gc.zgo.at; font-src 'self' file: data:;">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), display-capture=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <script>
+    if (window.top !== window.self) {
+      try {
+        window.top.location = window.self.location.href;
+      } catch (error) {
+        window.self.location = window.self.location.href;
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
+<link rel="dns-prefetch" href="//gc.zgo.at">
+<link rel="preconnect" href="https://livio.goatcounter.com" crossorigin>
+<link rel="dns-prefetch" href="//livio.goatcounter.com">
 
 <style>
 
@@ -1131,9 +1151,10 @@ function closeImg(){
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
-        async src="https://gc.zgo.at/count.js"></script>
+        async src="https://gc.zgo.at/count.js"
+        referrerpolicy="no-referrer"></script>
 
-<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener">VISITS</a>
+<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">VISITS</a>
 <script>
 (function(){
   const params = new URLSearchParams(window.location.search);
