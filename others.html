@@ -25,26 +25,6 @@
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="theme-color" content="#000000">
-<meta name="color-scheme" content="dark">
-<meta name="format-detection" content="telephone=no,email=no,address=no">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data: blob:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' file: https://gc.zgo.at; style-src 'self' 'unsafe-inline' file:; img-src 'self' file: data: blob: https:; connect-src 'self' file: https://livio.goatcounter.com https://gc.zgo.at; font-src 'self' file: data:;">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), display-capture=()">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <script>
-    if (window.top !== window.self) {
-      try {
-        window.top.location = window.self.location.href;
-      } catch (error) {
-        window.self.location = window.self.location.href;
-      }
-    }
-  </script>
-  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
-<link rel="dns-prefetch" href="//gc.zgo.at">
-<link rel="preconnect" href="https://livio.goatcounter.com" crossorigin>
-<link rel="dns-prefetch" href="//livio.goatcounter.com">
 
 <style>
 
@@ -1012,8 +992,9 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
+<div class="item"><img  src="12.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#12 A different perspective on the same world.</div></div>
 <div class="item"><img  src="11.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#11 At the Barbican in London, even loneliness feels designed.</div></div>
-<div class="item"><img  src="10.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#10</div></div>
+<div class="item"><img  src="10.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#10</div></div>
 <div class="item"><img  src="9.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#9</div></div>
 <div class="item"><img  src="8.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#8 UNMASKED</div></div>
 <div class="item"><img  src="7.webp" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy"><div class="caption">#7 Help me look for a trace of civilisation</div></div>
@@ -1030,8 +1011,8 @@ img {
 </div>
 <!-- OVERLAY -->
 <div id="overlay" onclick="closeImg()">
-<img id="overlay-img" onclick="event.stopPropagation()">
-<div id="overlay-text" onclick="event.stopPropagation()"></div>
+<img id="overlay-img">
+<div id="overlay-text"></div>
 </div>
 
 
@@ -1096,20 +1077,13 @@ function openImg(img){
   const text = document.getElementById("overlay-text");
   const src = img.currentSrc || img.src;
 
+  overlay.style.display = "flex";
   overlayImg.style.opacity = "0";
   overlayImg.onload = function(){
-    overlay.style.display = "flex";
-    overlayImg.style.opacity = "1";
-  };
-  overlayImg.onerror = function(){
-    overlay.style.display = "none";
     overlayImg.style.opacity = "1";
   };
   overlayImg.src = src;
-  if (overlayImg.complete && overlayImg.naturalWidth > 0) {
-    overlay.style.display = "flex";
-    overlayImg.style.opacity = "1";
-  }
+  if (overlayImg.complete) overlayImg.style.opacity = "1";
 
   const file = src.split("/").pop().replace(/\.[^.]+$/, "");
 
@@ -1125,7 +1099,14 @@ function openImg(img){
 }
 
 function preloadGalleryImages(){
-  return;
+  const seen = new Set();
+  document.querySelectorAll("#others .item img").forEach(function(img){
+    const src = img.getAttribute("src");
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    const preload = new Image();
+    preload.src = src;
+  });
 }
 
 document.addEventListener("DOMContentLoaded", preloadGalleryImages);
@@ -1137,8 +1118,6 @@ function closeImg(){
 
   overlay.style.display = "none";
   overlay.classList.remove("book-mode");
-  overlayImg.onload = null;
-  overlayImg.onerror = null;
   overlayImg.style.display = "";
   overlayImg.style.opacity = "1";
   overlayImg.src = "";
@@ -1147,10 +1126,9 @@ function closeImg(){
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
-        async src="https://gc.zgo.at/count.js"
-        referrerpolicy="no-referrer"></script>
+        async src="https://gc.zgo.at/count.js"></script>
 
-<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">VISITS</a>
+<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener">VISITS</a>
 <script>
 (function(){
   const params = new URLSearchParams(window.location.search);
