@@ -25,6 +25,26 @@
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <link rel="preload" as="image" href="firma.png">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data: blob:; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' file: https://gc.zgo.at; style-src 'self' 'unsafe-inline' file:; img-src 'self' file: data: blob: https:; connect-src 'self' file: https://livio.goatcounter.com https://gc.zgo.at; font-src 'self' file: data:;">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), midi=(), display-capture=()">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <script>
+    if (window.top !== window.self) {
+      try {
+        window.top.location = window.self.location.href;
+      } catch (error) {
+        window.self.location = window.self.location.href;
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://gc.zgo.at" crossorigin>
+<link rel="dns-prefetch" href="//gc.zgo.at">
+<link rel="preconnect" href="https://livio.goatcounter.com" crossorigin>
+<link rel="dns-prefetch" href="//livio.goatcounter.com">
 
 <style>
 
@@ -214,6 +234,8 @@ nav a:hover { opacity:1; }
 #overlay img {
   max-width:90vw;
   max-height:70vh;
+  opacity:1;
+  transition:opacity 0.18s ease;
 }
 
 #overlay-text {
@@ -509,6 +531,8 @@ nav a:hover { opacity:1; }
   max-width:94vw;
   max-height:92vh;
   object-fit:contain;
+  opacity:1;
+  transition:opacity 0.18s ease;
 }
 
 .polaroid-viewer-close {
@@ -966,6 +990,7 @@ img {
 <nav>
 <a href="others.html">THE OTHERS AND I</a>
 <a href="colours.html">COLOURS EDITION</a>
+<a href="prints.html">PRINTS</a>
 <a href="books.html">BOOKS</a>
 <a href="english-poems.html">ENGLISH POEMS</a>
 <a href="about.html">ABOUT</a>
@@ -978,6 +1003,7 @@ img {
 <div id="mobile-nav-menu" class="mobile-nav-menu" hidden>
   <a href="others.html">THE OTHERS AND I</a>
   <a href="colours.html">COLOURS EDITION</a>
+  <a href="prints.html">PRINTS</a>
   <a href="books.html">BOOKS</a>
   <a href="english-poems.html">ENGLISH POEMS</a>
   <a href="about.html">ABOUT</a>
@@ -993,7 +1019,7 @@ img {
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+    <img class="book-cover" src="images/books/covers/chiudi.webp" alt="Chiudi la porta prima di andare via" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
   </div>
   <div class="book-info">
     <p class="book-year">2026</p>
@@ -1002,14 +1028,14 @@ img {
     <p class="book-description">Una raccolta fatta di intimità e perdita, crollo emotivo e liberazione da ogni forma di dipendenza. Un invito a fare piano quando si entra o si esce dalle vite degli altri.</p>
     <div class="book-actions">
       <button class="book-button" type="button" onclick="openBook('chiudi')">READ</button>
-      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">BUY</a>
     </div>
   </div>
 </article>
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+    <img class="book-cover" src="images/books/covers/esserci.webp" alt="Esserci a fatica" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
   </div>
   <div class="book-info">
     <p class="book-year">2021</p>
@@ -1018,14 +1044,14 @@ img {
     <p class="book-description">Un dialogo tra poesia e Polaroid, costruito come attraversamento della memoria, della casa, del corpo e dell’assenza.</p>
     <div class="book-actions">
       <button class="book-button" type="button" onclick="openBook('esserci')">READ</button>
-      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+      <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">BUY</a>
     </div>
   </div>
 </article>
 
 <article class="book-row">
   <div class="book-cover-box">
-    <img class="book-cover" src="images/books/covers/vita.jpg" alt="La vita accade" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
+    <img class="book-cover" src="images/books/covers/vita.webp" alt="La vita accade" loading="lazy" decoding="async" draggable="false" oncontextmenu="return false">
   </div>
   <div class="book-info">
     <p class="book-year">2016</p>
@@ -1051,7 +1077,7 @@ img {
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/vita.jpg" alt="La vita accade" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/vita.webp" alt="La vita accade" decoding="async" loading="lazy">
     <h2>La vita accade</h2>
     <p class="book-reader-meta">Edizioni Amande</p>
   </div>
@@ -1102,7 +1128,7 @@ l’infinità di questo tetto universale.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/esserci.jpg" alt="Esserci a fatica" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/esserci.webp" alt="Esserci a fatica" decoding="async" loading="lazy">
     <h2>Esserci a fatica</h2>
     <p class="book-reader-meta">Poesie di Livio Spanò<br>Polaroid di Enza Amato<br>Edizioni Underground</p>
   </div>
@@ -1140,125 +1166,125 @@ una gigantesca macchia.</div>
 
   <div class="polaroid-gallery">
   <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-01.jpg" alt="Polaroid 01" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-01.webp" alt="Polaroid 01" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-02.jpg" alt="Polaroid 02" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-02.webp" alt="Polaroid 02" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-03.jpg" alt="Polaroid 03" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-03.webp" alt="Polaroid 03" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-04.jpg" alt="Polaroid 04" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-04.webp" alt="Polaroid 04" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-05.jpg" alt="Polaroid 05" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-05.webp" alt="Polaroid 05" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-06.jpg" alt="Polaroid 06" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-06.webp" alt="Polaroid 06" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-07.jpg" alt="Polaroid 07" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-07.webp" alt="Polaroid 07" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-08.jpg" alt="Polaroid 08" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-08.webp" alt="Polaroid 08" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-09.jpg" alt="Polaroid 09" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-09.webp" alt="Polaroid 09" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-10.jpg" alt="Polaroid 10" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-10.webp" alt="Polaroid 10" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-11.jpg" alt="Polaroid 11" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-11.webp" alt="Polaroid 11" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-12.jpg" alt="Polaroid 12" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-12.webp" alt="Polaroid 12" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-13.jpg" alt="Polaroid 13" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-13.webp" alt="Polaroid 13" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-14.jpg" alt="Polaroid 14" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-14.webp" alt="Polaroid 14" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-15.jpg" alt="Polaroid 15" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-15.webp" alt="Polaroid 15" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-16.jpg" alt="Polaroid 16" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-16.webp" alt="Polaroid 16" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-17.jpg" alt="Polaroid 17" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-17.webp" alt="Polaroid 17" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-18.jpg" alt="Polaroid 18" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-18.webp" alt="Polaroid 18" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-19.jpg" alt="Polaroid 19" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-19.webp" alt="Polaroid 19" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-20.jpg" alt="Polaroid 20" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-20.webp" alt="Polaroid 20" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-21.jpg" alt="Polaroid 21" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-21.webp" alt="Polaroid 21" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-22.jpg" alt="Polaroid 22" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-22.webp" alt="Polaroid 22" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-23.jpg" alt="Polaroid 23" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-23.webp" alt="Polaroid 23" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-24.jpg" alt="Polaroid 24" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-24.webp" alt="Polaroid 24" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-25.jpg" alt="Polaroid 25" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-25.webp" alt="Polaroid 25" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-26.jpg" alt="Polaroid 26" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-26.webp" alt="Polaroid 26" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-27.jpg" alt="Polaroid 27" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-27.webp" alt="Polaroid 27" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-28.jpg" alt="Polaroid 28" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-28.webp" alt="Polaroid 28" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
 <figure class="polaroid-frame">
-  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-29.jpg" alt="Polaroid 29" decoding="async" loading="lazy">
+  <img  onclick="event.stopPropagation(); openPolaroid(this)" src="images/books/esserci/polaroids/polaroid-29.webp" alt="Polaroid 29" decoding="async" loading="lazy">
   <figcaption>Polaroid © Enza Amato</figcaption>
 </figure>
   </div>
 
   <div class="book-reader-actions">
-    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">BUY</a>
   </div>
 </div>
 </template>
@@ -1267,7 +1293,7 @@ una gigantesca macchia.</div>
 <div class="book-reader" onclick="event.stopPropagation()">
   <button class="book-close" type="button" onclick="closeImg()">CLOSE</button>
   <div class="book-reader-header">
-    <img class="book-reader-cover" src="images/books/covers/chiudi.jpg" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
+    <img class="book-reader-cover" src="images/books/covers/chiudi.webp" alt="Chiudi la porta prima di andare via" decoding="async" loading="lazy">
     <h2>Chiudi la porta prima di andare via<br>Il futuro era ieri</h2>
     <p class="book-reader-meta">Edizioni Underground</p>
   </div>
@@ -1355,7 +1381,7 @@ Eri sola, ed eri in pace nel crepuscolo.</div>
   <p>Livio Spanò</p>
 
   <div class="book-reader-actions">
-    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener">BUY</a>
+    <a class="book-button" href="https://www.edizioniunderground.it/liviospan%C3%B2" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">BUY</a>
   </div>
 </div>
 </template>
@@ -1436,8 +1462,14 @@ window.addEventListener("resize", function(){
 function openPolaroid(img){
   const viewer = document.getElementById("polaroid-viewer");
   const viewerImg = document.getElementById("polaroid-viewer-img");
+  const src = img.currentSrc || img.src;
 
-  viewerImg.src = img.currentSrc || img.src;
+  viewerImg.style.opacity = "0";
+  viewerImg.onload = function(){
+    viewerImg.style.opacity = "1";
+  };
+  viewerImg.src = src;
+  if (viewerImg.complete) viewerImg.style.opacity = "1";
   viewer.style.display = "flex";
 }
 
@@ -1446,6 +1478,7 @@ function closePolaroid(){
   const viewerImg = document.getElementById("polaroid-viewer-img");
 
   viewer.style.display = "none";
+  viewerImg.style.opacity = "1";
   viewerImg.src = "";
 }
 
@@ -1474,12 +1507,26 @@ function closeImg(){
   overlayImg.src = "";
   text.innerHTML = "";
 }
+
+function preloadBooksImages(){
+  const seen = new Set();
+  document.querySelectorAll("img").forEach(function(img){
+    const src = img.getAttribute("src");
+    if (!src || seen.has(src)) return;
+    seen.add(src);
+    const preload = new Image();
+    preload.src = src;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", preloadBooksImages);
 </script>
 <!-- PRIVATE VISITOR COUNTER -->
 <script data-goatcounter="https://livio.goatcounter.com/count"
-        async src="https://gc.zgo.at/count.js"></script>
+        async src="https://gc.zgo.at/count.js"
+        referrerpolicy="no-referrer"></script>
 
-<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener">VISITS</a>
+<a id="private-admin-link" href="https://livio.goatcounter.com" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">VISITS</a>
 <script>
 (function(){
   const params = new URLSearchParams(window.location.search);
