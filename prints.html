@@ -135,6 +135,16 @@ nav a:hover { opacity:1; }
   opacity:0.52;
 }
 
+.prints-selected {
+  max-width:560px;
+  margin:28px auto 0;
+  font-size:12px;
+  line-height:1.6;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:0.72;
+}
+
 .prints-link {
   display:inline-block;
   margin-top:34px;
@@ -277,7 +287,8 @@ nav a:hover { opacity:1; }
       <p class="prints-note">
         For availability, format and production details, please get in touch through the Contact page.
       </p>
-      <a class="prints-link" href="contact.html">REQUEST A PRINT</a>
+      <p id="selected-work" class="prints-selected" hidden></p>
+      <a id="prints-request-link" class="prints-link" href="contact.html">REQUEST A PRINT</a>
     </div>
   </div>
 </div>
@@ -326,6 +337,36 @@ window.addEventListener("resize", function(){
     closeMobileMenu();
   }
 });
+</script>
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const work = params.get("work");
+  const selectedWork = document.getElementById("selected-work");
+  const requestLink = document.getElementById("prints-request-link");
+
+  if (!requestLink) return;
+
+  const subject = work ? "Print request - " + work : "Print request";
+  const bodyLines = [
+    "Hello Livio,",
+    "",
+    work ? "I would like to request information about a print of " + work + "." : "I would like to request information about a print.",
+    "",
+    "Format:",
+    "Paper:",
+    "Shipping country:",
+    "",
+    "Thank you."
+  ];
+
+  requestLink.href = "mailto:liviospano3@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyLines.join("\n"));
+
+  if (work && selectedWork) {
+    selectedWork.hidden = false;
+    selectedWork.textContent = "Selected work: " + work;
+  }
+})();
 </script>
 <script data-goatcounter="https://livio.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
