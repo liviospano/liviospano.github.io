@@ -89,13 +89,14 @@ nav a:hover { opacity:1; }
 .prints-shell {
   min-height:calc(100vh - 172px);
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   box-sizing:border-box;
+  padding:4vh 0 0;
 }
 
 .prints-card {
-  width:min(780px, 100%);
+  width:min(860px, 100%);
   text-align:center;
   padding:64px 42px;
   box-sizing:border-box;
@@ -133,6 +134,81 @@ nav a:hover { opacity:1; }
   letter-spacing:2px;
   text-transform:uppercase;
   opacity:0.52;
+}
+
+.prints-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+  margin:38px auto 0;
+  text-align:left;
+}
+
+.prints-panel {
+  border-top:1px solid rgba(255,255,255,0.18);
+  padding-top:18px;
+}
+
+.prints-panel h2 {
+  margin:0 0 15px;
+  font-size:10px;
+  line-height:1.4;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:normal;
+  opacity:0.58;
+}
+
+.prints-panel p,
+.prints-panel li {
+  font-size:13px;
+  line-height:1.75;
+  color:rgba(255,255,255,0.72);
+}
+
+.prints-panel p {
+  margin:0;
+}
+
+.prints-panel ul {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.prints-price-list {
+  display:grid;
+  gap:10px;
+}
+
+.prints-price-row {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:baseline;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.prints-price-row span:first-child {
+  font-size:13px;
+  line-height:1.5;
+  color:rgba(255,255,255,0.72);
+}
+
+.prints-price-row span:last-child {
+  font-size:12px;
+  letter-spacing:1.6px;
+  color:rgba(255,255,255,0.88);
+  white-space:nowrap;
+}
+
+.prints-footnote {
+  margin:24px auto 0;
+  max-width:640px;
+  font-size:11px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.46);
 }
 
 .prints-selected {
@@ -245,6 +321,12 @@ nav a:hover { opacity:1; }
   .prints-card {
     padding:46px 24px;
   }
+
+  .prints-grid {
+    grid-template-columns:1fr;
+    gap:24px;
+    margin-top:32px;
+  }
 }
 </style>
 </head>
@@ -282,10 +364,58 @@ nav a:hover { opacity:1; }
         Selected works from THE OTHERS AND I and COLOURS EDITION are available on request as fine art prints.
       </p>
       <p class="prints-copy">
-        Each print is prepared individually and signed by Livio Spanò.
+        Each fine art print is prepared individually, signed, numbered and recorded as part of a limited edition.
       </p>
       <p class="prints-note">
-        For availability, format and production details, please get in touch through the Contact page.
+        Production is handled on request through a professional fine art print workflow. Preferred production partner: theprintspace / creativehub.
+      </p>
+      <div class="prints-grid" aria-label="Print formats and request process">
+        <section class="prints-panel">
+          <h2>Formats</h2>
+          <div class="prints-price-list">
+            <div class="prints-price-row">
+              <span>Small print, signed layout, unframed</span>
+              <span>GBP 85</span>
+            </div>
+            <div class="prints-price-row">
+              <span>Medium print, signed layout, unframed</span>
+              <span>GBP 160</span>
+            </div>
+            <div class="prints-price-row">
+              <span>Large print, signed layout, unframed</span>
+              <span>GBP 290</span>
+            </div>
+            <div class="prints-price-row">
+              <span>Custom size or edition request</span>
+              <span>On request</span>
+            </div>
+          </div>
+        </section>
+        <section class="prints-panel">
+          <h2>Limited Editions</h2>
+          <p>
+            Fine art prints are produced as limited editions. Each print receives its own edition number after payment confirmation and is recorded in the studio archive.
+          </p>
+        </section>
+        <section class="prints-panel">
+          <h2>Order Process</h2>
+          <ul>
+            <li>Select the work and request a print.</li>
+            <li>Format, paper and shipping country are confirmed by email.</li>
+            <li>A secure Stripe payment link is sent after confirmation.</li>
+            <li>The edition number is assigned and the print is produced in the approved signed layout.</li>
+          </ul>
+        </section>
+        <section class="prints-panel">
+          <h2>Secure Payment</h2>
+          <p>
+            The standard online payment method is a secure Stripe Payment Link, sent only after the print details have been confirmed.
+            Card details are processed by Stripe and are not collected or stored by this website.
+          </p>
+        </section>
+      </div>
+      <p class="prints-footnote">
+        Prices are a starting guide for unframed prints. Shipping, framing, edition availability and final payment details are confirmed before any payment is requested.
       </p>
       <p id="selected-work" class="prints-selected" hidden></p>
       <a id="prints-request-link" class="prints-link" href="contact.html">REQUEST A PRINT</a>
@@ -356,6 +486,7 @@ window.addEventListener("resize", function(){
     "Format:",
     "Paper:",
     "Shipping country:",
+    "Shipping address:",
     "",
     "Thank you."
   ];
