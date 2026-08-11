@@ -1197,7 +1197,7 @@ img {
 <h1 style="text-align:center;">THE OTHERS AND I</h1>
 
 <div class="grid">
-<div class="item carousel-item" data-carousel data-index="0" tabindex="0" aria-label="THE OTHERS AND I #18, carousel of 6 photographs">
+<div class="item carousel-item" data-carousel data-index="0" data-print-available="false" tabindex="0" aria-label="THE OTHERS AND I #18, carousel of 6 photographs">
   <div class="carousel-stage">
     <img class="carousel-slide is-active" src="others-18-slide-01.webp" alt="THE OTHERS AND I #18, photograph 1 of 6" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high">
     <img class="carousel-slide" src="others-18-slide-02.webp" alt="THE OTHERS AND I #18, photograph 2 of 6" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="lazy" aria-hidden="true">
@@ -1526,6 +1526,7 @@ function openImg(img){
 
 function addPrintRequestLink(text, img, series){
   const item = img.closest ? img.closest(".item") : img.parentElement;
+  if (item && item.dataset.printAvailable === "false") return;
   const caption = item ? item.querySelector(".caption") : null;
   const captionText = caption ? caption.textContent.trim() : "";
   const numberMatch = captionText.match(/^#\d+/);
