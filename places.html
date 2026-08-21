@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLACES | Livio Spanò, Books and Photography</title>
+<meta name="description" content="PLACES, a photographic series by Livio Spanò.">
+<link rel="canonical" href="https://www.liviospano.com/places.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.liviospano.com/places.html">
+<meta property="og:title" content="PLACES | Livio Spanò, Books and Photography">
+<meta property="og:description" content="PLACES, a photographic series by Livio Spanò.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PLACES | Livio Spanò, Books and Photography">
+<meta name="twitter:description" content="PLACES, a photographic series by Livio Spanò.">
+<meta name="theme-color" content="#000000">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at center,#1c1c1c 0%,#000 85%); color:#fff; font-family:Arial,sans-serif; }
+  nav { position:fixed; inset:0 0 auto; z-index:1000; min-height:52px; display:flex; justify-content:center; align-items:center; gap:30px; padding:15px 24px; background:rgba(0,0,0,.92); }
+  nav a { color:#fff; text-decoration:none; font-size:12px; opacity:.7; white-space:nowrap; }
+  nav a:hover, nav a[aria-current="page"] { opacity:1; }
+  .mobile-nav-toggle, .mobile-nav-menu { display:none; }
+  main { padding:100px 0 72px; min-height:100vh; }
+  h1 { margin:0 20px 35px; text-align:center; font-size:clamp(24px,4vw,38px); font-weight:400; letter-spacing:.08em; }
+  .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:0 40px; max-width:1600px; margin:auto; }
+  .item { position:relative; background:#000; outline:none; }
+  .item:nth-child(1) { order:2; }
+  .item:nth-child(2) { order:1; }
+  .item:focus-visible { outline:1px solid #fff; outline-offset:3px; }
+  .carousel-stage { position:relative; width:100%; aspect-ratio:4/3; overflow:hidden; background:#000; touch-action:pan-y; }
+  .carousel-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .28s ease; cursor:zoom-in; }
+  .carousel-slide.is-active { opacity:1; visibility:visible; pointer-events:auto; }
+  .carousel-control { position:absolute; top:58%; z-index:4; width:42px; height:52px; border:1px solid rgba(255,255,255,.52); background:rgba(0,0,0,.54); color:#fff; font:normal 28px/1 Arial; cursor:pointer; transform:translateY(-50%); }
+  .carousel-control:hover, .carousel-control:focus-visible { background:rgba(255,255,255,.92); color:#000; }
+  .carousel-control.previous { left:12px; } .carousel-control.next { right:12px; }
+  .carousel-counter { position:absolute; top:12px; right:12px; z-index:4; padding:6px 8px; background:rgba(0,0,0,.58); font-size:11px; letter-spacing:1px; }
+  .carousel-dots { position:absolute; bottom:16px; left:50%; z-index:4; display:flex; gap:7px; transform:translateX(-50%); }
+  .carousel-dot { width:8px; height:8px; padding:0; border:1px solid rgba(255,255,255,.92); border-radius:50%; background:rgba(0,0,0,.42); cursor:pointer; }
+  .carousel-dot.is-active { background:#fff; }
+  .caption { position:absolute; bottom:15px; left:15px; z-index:5; padding:6px 8px; background:rgba(0,0,0,.52); font-size:13px; }
+  #overlay { position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; flex-direction:column; background:#000; }
+  #overlay img { max-width:90vw; max-height:76vh; object-fit:contain; cursor:default; }
+  .overlay-control { position:absolute; top:58%; z-index:2; width:48px; height:58px; border:1px solid rgba(255,255,255,.52); background:rgba(0,0,0,.64); color:#fff; font:normal 34px/1 Arial; cursor:pointer; transform:translateY(-50%); }
+  .overlay-control:hover, .overlay-control:focus-visible { background:#fff; color:#000; }
+  .overlay-control.previous { left:4vw; } .overlay-control.next { right:4vw; }
+  #overlay-counter { margin-top:16px; letter-spacing:1px; font-size:12px; }
+  #overlay-text { margin-top:14px; text-align:center; }
+  .overlay-print-link { display:inline-block; padding:9px 12px; border:1px solid rgba(255,255,255,.7); color:#fff; text-decoration:none; font-size:11px; letter-spacing:1px; }
+  .global-footer { padding:20px; text-align:center; color:rgba(255,255,255,.55); font-size:10px; letter-spacing:.1em; }
+  @media (max-width:900px) { nav { justify-content:flex-end; padding:11px 16px; } nav > a { display:none; } .mobile-nav-toggle { display:grid; width:42px; height:34px; padding:7px; border:1px solid rgba(255,255,255,.5); background:#000; cursor:pointer; gap:4px; } .mobile-nav-toggle span { display:block; height:1px; background:#fff; } .mobile-nav-menu { position:fixed; top:52px; right:0; left:0; z-index:999; padding:18px 24px; background:rgba(0,0,0,.96); border-top:1px solid rgba(255,255,255,.16); } .mobile-nav-menu:not([hidden]) { display:grid; gap:16px; } .mobile-nav-menu a { color:#fff; text-decoration:none; font-size:13px; letter-spacing:.04em; } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:0 8px; } .carousel-control { width:32px; height:44px; font-size:24px; } .carousel-control.previous { left:6px; } .carousel-control.next { right:6px; } .caption { left:8px; bottom:8px; } }
+  @media (prefers-reduced-motion:reduce) { .carousel-slide { transition:none; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="others.html">THE OTHERS AND I</a>
+  <a href="places.html" aria-current="page">PLACES</a>
+  <a href="colours.html">COLOURS EDITION</a>
+  <a href="prints.html">PRINTS</a>
+  <a href="books.html">BOOKS</a>
+  <a href="english-poems.html">ENGLISH POEMS</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
+  <button id="mobile-nav-toggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu"><span></span><span></span><span></span></button>
+  <div id="mobile-nav-menu" class="mobile-nav-menu" hidden>
+    <a href="others.html">THE OTHERS AND I</a>
+    <a href="places.html" aria-current="page">PLACES</a>
+    <a href="colours.html">COLOURS EDITION</a>
+    <a href="prints.html">PRINTS</a>
+    <a href="books.html">BOOKS</a>
+    <a href="english-poems.html">ENGLISH POEMS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+</nav>
+<main>
+  <h1>PLACES</h1>
+  <div class="grid">
+    <div class="item carousel-item" data-carousel data-index="0" tabindex="0" aria-label="PLACES #2, carousel of 4 photographs">
+      <div class="carousel-stage">
+        <img class="carousel-slide is-active" src="places-02-slide-01.webp" alt="PLACES #2, photograph 1 of 4" draggable="false" decoding="async" loading="eager" fetchpriority="high">
+        <img class="carousel-slide" src="places-02-slide-02.webp" alt="PLACES #2, photograph 2 of 4" draggable="false" decoding="async" loading="lazy" aria-hidden="true">
+        <img class="carousel-slide" src="places-02-slide-03.webp" alt="PLACES #2, photograph 3 of 4" draggable="false" decoding="async" loading="lazy" aria-hidden="true">
+        <img class="carousel-slide" src="places-02-slide-04.webp" alt="PLACES #2, photograph 4 of 4" draggable="false" decoding="async" loading="lazy" aria-hidden="true">
+        <button class="carousel-control previous" type="button" aria-label="Previous photograph">‹</button>
+        <button class="carousel-control next" type="button" aria-label="Next photograph">›</button>
+        <div class="carousel-counter" aria-live="polite"><span class="carousel-current">1</span> / 4</div>
+        <div class="carousel-dots" role="group" aria-label="Choose a photograph"><button class="carousel-dot is-active" type="button" aria-label="Photograph 1 of 4" aria-pressed="true"></button><button class="carousel-dot" type="button" aria-label="Photograph 2 of 4" aria-pressed="false"></button><button class="carousel-dot" type="button" aria-label="Photograph 3 of 4" aria-pressed="false"></button><button class="carousel-dot" type="button" aria-label="Photograph 4 of 4" aria-pressed="false"></button></div>
+      </div>
+      <div class="caption">#2</div>
+    </div>
+    <div class="item carousel-item" data-carousel data-index="0" tabindex="0" aria-label="PLACES #1, carousel of 2 photographs">
+      <div class="carousel-stage">
+        <img class="carousel-slide is-active" src="places-01-slide-01.webp" alt="PLACES #1, photograph 1 of 2" draggable="false" decoding="async" loading="eager" fetchpriority="high">
+        <img class="carousel-slide" src="places-01-slide-02.webp" alt="PLACES #1, photograph 2 of 2" draggable="false" decoding="async" loading="lazy" aria-hidden="true">
+        <button class="carousel-control previous" type="button" aria-label="Previous photograph">‹</button>
+        <button class="carousel-control next" type="button" aria-label="Next photograph">›</button>
+        <div class="carousel-counter" aria-live="polite"><span class="carousel-current">1</span> / 2</div>
+        <div class="carousel-dots" role="group" aria-label="Choose a photograph"><button class="carousel-dot is-active" type="button" aria-label="Photograph 1 of 2" aria-pressed="true"></button><button class="carousel-dot" type="button" aria-label="Photograph 2 of 2" aria-pressed="false"></button></div>
+      </div>
+      <div class="caption">#1</div>
+    </div>
+  </div>
+</main>
+<div id="overlay" aria-modal="true" role="dialog" aria-label="Enlarged photograph">
+  <button class="overlay-control previous" id="overlay-prev" type="button" aria-label="Previous enlarged photograph">‹</button>
+  <img id="overlay-img" alt="">
+  <button class="overlay-control next" id="overlay-next" type="button" aria-label="Next enlarged photograph">›</button>
+  <div id="overlay-counter" aria-live="polite"></div>
+  <div id="overlay-text"></div>
+</div>
+<footer class="global-footer">Powered by INEBRIUS</footer>
+<script>
+  const overlay = document.getElementById('overlay');
+  const overlayImg = document.getElementById('overlay-img');
+  const overlayCounter = document.getElementById('overlay-counter');
+  const overlayText = document.getElementById('overlay-text');
+  let overlaySlides = []; let overlayIndex = 0;
+  function setSlide(carousel, requestedIndex) {
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+    const index = (requestedIndex + slides.length) % slides.length;
+    carousel.dataset.index = index;
+    slides.forEach((slide, i) => { const active = i === index; slide.classList.toggle('is-active', active); slide.setAttribute('aria-hidden', active ? 'false' : 'true'); });
+    dots.forEach((dot, i) => { const active = i === index; dot.classList.toggle('is-active', active); dot.setAttribute('aria-pressed', active ? 'true' : 'false'); });
+    carousel.querySelector('.carousel-current').textContent = index + 1;
+  }
+  function openOverlay(carousel, index) {
+    overlaySlides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    overlayIndex = index;
+    updateOverlay();
+    overlay.style.display = 'flex';
+  }
+  function updateOverlay() {
+    overlayIndex = (overlayIndex + overlaySlides.length) % overlaySlides.length;
+    const image = overlaySlides[overlayIndex];
+    overlayImg.src = image.currentSrc || image.src; overlayImg.alt = image.alt;
+    overlayCounter.textContent = `${overlayIndex + 1} / ${overlaySlides.length}`;
+    overlayText.innerHTML = '<a class="overlay-print-link" href="prints.html?work=' + encodeURIComponent(image.closest('[data-carousel]').querySelector('.caption').textContent.trim().replace('#', 'PLACES #')) + '">REQUEST PRINT</a>';
+  }
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const stage = carousel.querySelector('.carousel-stage'); let startX = 0; let startY = 0;
+    carousel.querySelector('.previous').addEventListener('click', event => { event.stopPropagation(); setSlide(carousel, Number(carousel.dataset.index) - 1); });
+    carousel.querySelector('.next').addEventListener('click', event => { event.stopPropagation(); setSlide(carousel, Number(carousel.dataset.index) + 1); });
+    carousel.querySelectorAll('.carousel-dot').forEach((dot, index) => dot.addEventListener('click', event => { event.stopPropagation(); setSlide(carousel, index); }));
+    carousel.addEventListener('keydown', event => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); setSlide(carousel, Number(carousel.dataset.index) + (event.key === 'ArrowLeft' ? -1 : 1)); } });
+    stage.addEventListener('click', event => { const image = event.target.closest('.carousel-slide'); if (image) openOverlay(carousel, Array.from(carousel.querySelectorAll('.carousel-slide')).indexOf(image)); });
+    stage.addEventListener('touchstart', event => { const touch = event.changedTouches[0]; startX = touch.clientX; startY = touch.clientY; }, {passive:true});
+    stage.addEventListener('touchend', event => { const touch = event.changedTouches[0]; const dx = touch.clientX - startX; const dy = touch.clientY - startY; if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) setSlide(carousel, Number(carousel.dataset.index) + (dx < 0 ? 1 : -1)); }, {passive:true});
+  });
+  document.getElementById('overlay-prev').addEventListener('click', event => { event.stopPropagation(); overlayIndex--; updateOverlay(); });
+  document.getElementById('overlay-next').addEventListener('click', event => { event.stopPropagation(); overlayIndex++; updateOverlay(); });
+  overlay.addEventListener('click', event => { if (event.target === overlay) overlay.style.display = 'none'; });
+  overlayImg.addEventListener('click', event => event.stopPropagation());
+  document.addEventListener('keydown', event => { if (overlay.style.display !== 'flex') return; if (event.key === 'Escape') overlay.style.display = 'none'; if (event.key === 'ArrowLeft') { overlayIndex--; updateOverlay(); } if (event.key === 'ArrowRight') { overlayIndex++; updateOverlay(); } });
+  const toggle = document.getElementById('mobile-nav-toggle'); const menu = document.getElementById('mobile-nav-menu');
+  toggle.addEventListener('click', () => { const open = menu.hidden; menu.hidden = !open; toggle.setAttribute('aria-expanded', String(open)); });
+</script>
+</body>
+</html>
