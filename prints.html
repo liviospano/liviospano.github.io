@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRINTS | Livio Spanò, Books and Photography</title>
-<meta name="description" content="Updates in progress for the Prints section by Livio Spanò. News coming soon.">
+<meta name="description" content="Fine art prints by Livio Spanò. Selected works are available on request as signed prints.">
 <link rel="canonical" href="https://www.liviospano.com/prints.html">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="PRINTS | Livio Spanò, Books and Photography">
-<meta property="og:description" content="Updates in progress for the Prints section by Livio Spanò. News coming soon.">
+<meta property="og:description" content="Fine art prints by Livio Spanò. Selected works are available on request as signed prints.">
 <meta property="og:url" content="https://www.liviospano.com/prints.html">
 <meta property="og:image" content="https://www.liviospano.com/social-preview.jpg">
 <meta property="og:image:secure_url" content="https://www.liviospano.com/social-preview.jpg">
@@ -21,7 +21,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PRINTS | Livio Spanò, Books and Photography">
-<meta name="twitter:description" content="Updates in progress for the Prints section by Livio Spanò. News coming soon.">
+<meta name="twitter:description" content="Fine art prints by Livio Spanò. Selected works are available on request as signed prints.">
 <meta name="twitter:image" content="https://www.liviospano.com/social-preview.jpg">
 
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -89,10 +89,10 @@ nav a:hover { opacity:1; }
 .prints-shell {
   min-height:calc(100vh - 172px);
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content:center;
   box-sizing:border-box;
-  padding:0;
+  padding:4vh 0 0;
 }
 
 .prints-card {
@@ -332,8 +332,8 @@ nav a:hover { opacity:1; }
 </head>
 <body>
 <nav>
-<a href="others.html">THE OTHERS AND I</a>
-<a href="places.html">PLACES</a>
+        <a href="others.html">THE OTHERS AND I</a>
+        <a href="places.html">PLACES</a>
 <a href="colours.html">COLOURS EDITION</a>
 <a href="prints.html">PRINTS</a>
 <a href="books.html">BOOKS</a>
@@ -346,8 +346,8 @@ nav a:hover { opacity:1; }
   <span aria-hidden="true"></span>
 </button>
 <div id="mobile-nav-menu" class="mobile-nav-menu" hidden>
-  <a href="others.html">THE OTHERS AND I</a>
-<a href="places.html">PLACES</a>
+            <a href="others.html">THE OTHERS AND I</a>
+            <a href="places.html">PLACES</a>
   <a href="colours.html">COLOURS EDITION</a>
   <a href="prints.html">PRINTS</a>
   <a href="books.html">BOOKS</a>
@@ -361,10 +361,66 @@ nav a:hover { opacity:1; }
   <div class="prints-shell">
     <div class="prints-card">
       <p class="prints-kicker">FINE ART PRINTS</p>
-      <h1>Updates in progress</h1>
+      <h1>Prints</h1>
       <p class="prints-copy">
-        News coming soon.
+        Selected works from THE OTHERS AND I and COLOURS EDITION are available on request as fine art prints.
       </p>
+      <p class="prints-copy">
+        Each fine art print is prepared individually, signed, numbered and recorded as part of a limited edition.
+      </p>
+      <p class="prints-note">
+        Production is handled on request through a professional fine art print workflow. Preferred production partner: theprintspace / creativehub.
+      </p>
+      <div class="prints-grid" aria-label="Print formats and request process">
+        <section class="prints-panel">
+          <h2>Formats</h2>
+          <div class="prints-price-list">
+            <div class="prints-price-row">
+              <span>A4 fine art print, 210 x 297 mm / 8.27 x 11.69 in, signed and numbered, unframed</span>
+              <span>GBP 85</span>
+            </div>
+            <div class="prints-price-row">
+              <span>A3 fine art print, 297 x 420 mm / 11.69 x 16.54 in, signed and numbered, unframed</span>
+              <span>GBP 160</span>
+            </div>
+            <div class="prints-price-row">
+              <span>A2 fine art print, 420 x 594 mm / 16.54 x 23.39 in, signed and numbered, unframed</span>
+              <span>GBP 290</span>
+            </div>
+            <div class="prints-price-row">
+              <span>Custom size or edition request</span>
+              <span>On request</span>
+            </div>
+          </div>
+        </section>
+        <section class="prints-panel">
+          <h2>Limited Editions</h2>
+          <p>
+            Fine art prints are produced as limited editions. Each print receives its own edition number after payment confirmation and is recorded in the studio archive.
+          </p>
+        </section>
+        <section class="prints-panel">
+          <h2>Order Process</h2>
+          <ul>
+            <li>Select the work and request a print.</li>
+            <li>Format, paper and shipping country are confirmed by email.</li>
+            <li>A secure Stripe payment link is sent after confirmation.</li>
+            <li>The edition number is assigned and the print is produced in the approved signed layout.</li>
+          </ul>
+        </section>
+        <section class="prints-panel">
+          <h2>Secure Payment</h2>
+          <p>
+            The standard online payment method is a secure Stripe Payment Link, sent only after the print details have been confirmed.
+            Card details are processed by Stripe and are not collected or stored by this website.
+          </p>
+        </section>
+      </div>
+      <p class="prints-footnote">
+        Prices refer to unframed signed and numbered prints in the listed paper sizes. Shipping, framing, edition availability and final payment details are confirmed before any payment is requested.
+      </p>
+      <p id="selected-work" class="prints-selected" hidden></p>
+      <a id="prints-request-link" class="prints-link" href="contact.html">REQUEST A PRINT</a>
     </div>
   </div>
 </div>
@@ -413,6 +469,37 @@ window.addEventListener("resize", function(){
     closeMobileMenu();
   }
 });
+</script>
+<script>
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const work = params.get("work");
+  const selectedWork = document.getElementById("selected-work");
+  const requestLink = document.getElementById("prints-request-link");
+
+  if (!requestLink) return;
+
+  const subject = work ? "Print request - " + work : "Print request";
+  const bodyLines = [
+    "Hello Livio,",
+    "",
+    work ? "I would like to request information about a print of " + work + "." : "I would like to request information about a print.",
+    "",
+    "Preferred format: A4 / A3 / A2 / Custom",
+    "Paper:",
+    "Shipping country:",
+    "Shipping address:",
+    "",
+    "Thank you."
+  ];
+
+  requestLink.href = "mailto:liviospano3@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyLines.join("\n"));
+
+  if (work && selectedWork) {
+    selectedWork.hidden = false;
+    selectedWork.textContent = "Selected work: " + work;
+  }
+})();
 </script>
 <script data-goatcounter="https://livio.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
