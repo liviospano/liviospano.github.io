@@ -1137,6 +1137,14 @@ img {
   width:100%;
 }
 
+/* #22 is deliberately lowered beside the vertical #23 for a calmer desktop rhythm. */
+@media (min-width:861px) {
+  #others .item--others-22 {
+    align-self:start;
+    margin-top:clamp(72px, 10vw, 180px);
+  }
+}
+
 #others .item::after,
 #colours .item::after {
   content:"©";
@@ -1200,7 +1208,7 @@ img {
 
 <div class="grid">
 <div class="item"><img src="others-23.webp" alt="THE OTHERS AND I #23" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#23</div></div>
-<div class="item"><img src="others-22.webp" alt="THE OTHERS AND I #22" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#22</div></div>
+<div class="item item--others-22"><img src="others-22.webp" alt="THE OTHERS AND I #22" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#22</div></div>
 <div class="item"><img src="others-21.webp" alt="THE OTHERS AND I #21" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#21</div></div>
 <div class="item"><img src="others-20.webp" alt="THE OTHERS AND I #20" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#20</div></div>
 <div class="item"><img src="others-19.webp" alt="THE OTHERS AND I #19" onclick="openImg(this)" draggable="false" oncontextmenu="return false" decoding="async" loading="eager" fetchpriority="high"><div class="caption">#19</div></div>
